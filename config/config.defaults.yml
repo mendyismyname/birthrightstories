@@ -1,0 +1,17 @@
+default: &default_settings
+
+  instagram_key: ''
+  instagram_secret: ''
+
+
+production: &production_settings
+  <<: *default_settings
+
+staging:
+  <<: *production_settings
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings

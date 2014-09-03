@@ -1,0 +1,19 @@
+default: &default_settings
+
+  instagram_id:           'a08dce2946104e78a6d8d2e9b3010af0'
+  instagram_secret:       '9f0d7eb5e68f447d94528151dfb334bc'
+  instagram_scope:        ''
+  instagram_redirect_uri: ''
+  instagram_access_token: '270067442.5b9e1e6.035ceabb7329419ab51bdd29fe80a27c' 
+
+production: &production_settings
+  <<: *default_settings
+
+staging:
+  <<: *production_settings
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings

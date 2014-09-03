@@ -1,0 +1,59 @@
+%header.navigation
+  .menu-wrapper
+    = link_to '#', class: 'logo' do
+      = image_tag 'large_logo.png'
+    
+    .nav
+      #navigation-caption
+        = image_tag '400comma.png'
+        %p Birthright Stories
+        %p What's Yours?
+
+    -# %p#js-mobile-menu.navigation-menu-button MENU
+    -# .nav
+    -#   %ul#navigation-menu
+    -#     %li.nav-link
+    -#       %a{:href => "javascript:void(0)"} Products
+    -#     %li.nav-link
+    -#       %a{:href => "javascript:void(0)"} About Us
+    -#     %li.nav-link
+    -#       %a{:href => "javascript:void(0)"} Contact
+    -#     %li.nav-link.more
+    -#       %a{:href => "javascript:void(0)"} More
+    -#       %ul.submenu
+    -#         %li
+    -#           %a{:href => "javascript:void(0)"} Submenu Item
+    -#         %li
+    -#           %a{:href => "javascript:void(0)"} Another Item
+    .navigation-tools
+      -# .search-bar
+      -#   .search-and-submit
+      -#     %input{:placeholder => "Enter Search", :type => "search"}/
+      -#     %button{:type => "submit"}
+      -#       %img{:alt => "", :src => "https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png"}/
+      %a.sign-up{:href => "javascript:void(0)"} Sign Up
+
+:javascript
+  $(function() {
+    var menu = $('#navigation-menu');
+    var menuToggle = $('#js-mobile-menu');
+    var signUp = $('.sign-up');
+
+    $(menuToggle).on('click', function(e) {
+      e.preventDefault();
+      menu.slideToggle(function(){
+        if(menu.is(':hidden')) {
+          menu.removeAttr('style');
+        }
+      });
+    });
+
+    // underline under the active nav item
+    $(".nav .nav-link").click(function() {
+      $(".nav .nav-link").each(function() {
+        $(this).removeClass("active-nav-item");
+      });
+      $(this).addClass("active-nav-item"); 
+      $(".nav .more").removeClass("active-nav-item");
+    });
+  });

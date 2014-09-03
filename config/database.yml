@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+
+development:
+  <<: *default
+  database: birthrightstories_development
+
+test:
+  <<: *default
+  database: birthrightstories_test
+
+production:
+  <<: *default
+  database:  birthrightstories_production
+  # username:  rails
+  # password:  password
+  reconnect: true
