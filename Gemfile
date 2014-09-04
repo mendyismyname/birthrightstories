@@ -7,6 +7,7 @@ gem 'mysql2'
 gem 'decent_exposure'
 gem 'friendly_id'
 gem 'possibly', '~> 0.1.1' # Maybe monad
+gem 'rails-i18n', '~> 4.0.0'
 
 # Webserver
 group :staging, :production do
@@ -21,8 +22,6 @@ end
 
 # Instagram
 gem 'instagram'
-gem 'oj' # Fix JSON serialization of emjoi issue with instagram
-
 
 # Admin Panel
 # gem 'activeadmin', github: 'activeadmin'
