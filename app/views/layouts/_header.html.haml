@@ -11,22 +11,23 @@
           = t('header.follow_up')
            
 
-    -# %p#js-mobile-menu.navigation-menu-button MENU
-    -# .nav
-    -#   %ul#navigation-menu
-    -#     %li.nav-link
-    -#       %a{:href => "javascript:void(0)"} Products
-    -#     %li.nav-link
-    -#       %a{:href => "javascript:void(0)"} About Us
-    -#     %li.nav-link
-    -#       %a{:href => "javascript:void(0)"} Contact
-    -#     %li.nav-link.more
-    -#       %a{:href => "javascript:void(0)"} More
-    -#       %ul.submenu
-    -#         %li
-    -#           %a{:href => "javascript:void(0)"} Submenu Item
-    -#         %li
-    -#           %a{:href => "javascript:void(0)"} Another Item
+    %p#js-mobile-menu.navigation-menu-button MENU
+    .nav
+      %ul#navigation-menu
+
+        %li.nav-link
+          = link_to '#' do
+            = t('header.taglit_hash')
+        %li.nav-link.more
+          = link_to '#' do
+            = image_tag t('images.flag')
+          %ul.submenu
+            - I18n.available_locales.each do |locale|
+              %li
+                = link_to url_for(locale: locale) do
+                  = t('locale_name', locale: locale)
+                  = image_tag t('images.flag', locale: locale)
+
     .navigation-tools
       -# .search-bar
       -#   .search-and-submit
@@ -34,17 +35,5 @@
       -#     %button{:type => "submit"}
       -#       %img{:alt => "", :src => "https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png"}/
     
-      = link_to '#', class: 'taglit' do 
-        = t('header.taglit_hash')
-
-      .nav-locale
-        = image_tag t('images.flag')
-        %ul.locale-menu
-          - I18n.available_locales.each do |locale|
-            %li.nav-link
-              = link_to url_for(locale: locale) do
-                = t('locale_name', locale: locale)
-                = image_tag t('images.flag', locale: locale)
-
 
 .navigation-buffer
