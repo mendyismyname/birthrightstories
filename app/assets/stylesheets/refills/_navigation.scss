@@ -4,6 +4,7 @@ header.navigation {
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
   $navigation-height: 250px;
+  $navigation-height-small: 50px;
   $navigation-caption-width: 250px;
   $navigation-nav-button-background: $base-accent-color;
   $navigation-nav-button-background-hover: lighten($navigation-background, 10);
@@ -20,6 +21,13 @@ header.navigation {
   height: $navigation-height;
   width: 100%;
   z-index: 999;
+  position: fixed;
+
+  @include transition (height 0.3s ease-in-out);
+
+  &.smaller{
+    height: $navigation-height-small;
+  }
 
   .menu-wrapper {
     @include outer-container;

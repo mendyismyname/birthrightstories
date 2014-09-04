@@ -56,4 +56,14 @@
       $(this).addClass("active-nav-item"); 
       $(".nav .more").removeClass("active-nav-item");
     });
+
+
+
+    window.addEventListener('scroll', function(e){
+      var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+          shrinkOn = 300;
+
+      $("header").toggleClass('smaller', distanceY > shrinkOn)
+    });
+    
   });

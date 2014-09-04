@@ -22,8 +22,9 @@
         .modal-inner
           %label.modal-close{for: uid}
           = image_tag media.standard_resolution_image_url
+          
           %h1= media.instagram_user_full_name
-          %p.intro= media.caption
-          %p.body= media.caption
+          %p.intro= media.caption_text
+          -# %p.body= media.caption
           -# .facebook-link= media.instagram_user_id
           -# .mail-to= media.weirdness

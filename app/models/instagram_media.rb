@@ -60,4 +60,8 @@ class InstagramMedia < ActiveRecord::Base
     end
   end
 
+  def caption_text
+    caption['text']
+  end
+
 end
