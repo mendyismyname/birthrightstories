@@ -6,8 +6,8 @@
     .nav
       #navigation-caption
         = image_tag '400comma.png'
-        %p Birthright Stories
-        %p What's Yours?
+        %p.subtitle Birthright Stories
+        = link_to '#', "What's Yours?"
 
     -# %p#js-mobile-menu.navigation-menu-button MENU
     -# .nav
@@ -31,39 +31,8 @@
       -#     %input{:placeholder => "Enter Search", :type => "search"}/
       -#     %button{:type => "submit"}
       -#       %img{:alt => "", :src => "https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png"}/
-      %a.sign-up{:href => "javascript:void(0)"} Sign Up
+      = link_to '#', class: 'taglit' do 
+        = '#Taglit'
 
-:javascript
-  $(function() {
-    var menu = $('#navigation-menu');
-    var menuToggle = $('#js-mobile-menu');
-    var signUp = $('.sign-up');
-
-    $(menuToggle).on('click', function(e) {
-      e.preventDefault();
-      menu.slideToggle(function(){
-        if(menu.is(':hidden')) {
-          menu.removeAttr('style');
-        }
-      });
-    });
-
-    // underline under the active nav item
-    $(".nav .nav-link").click(function() {
-      $(".nav .nav-link").each(function() {
-        $(this).removeClass("active-nav-item");
-      });
-      $(this).addClass("active-nav-item"); 
-      $(".nav .more").removeClass("active-nav-item");
-    });
-
-
-
-    window.addEventListener('scroll', function(e){
-      var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-          shrinkOn = 300;
-
-      $("header").toggleClass('smaller', distanceY > shrinkOn)
-    });
-    
-  });
+      .locale-menu
+        = image_tag t('flag_icon')

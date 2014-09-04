@@ -20,9 +20,8 @@ $base-body-color: #eee;
 @import "refills/hover-tile-animation";
 @import "refills/modal";
 
-// @import "instances/instagram-media";
+@import "instances/hashtag";
 
-
-.app-content{
-  padding-top: 200px;
-}
+// .app-content{
+//   padding-top: 200px;
+// }

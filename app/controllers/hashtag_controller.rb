@@ -1,7 +1,8 @@
 class HashtagController < ApplicationController
 
   expose(:hashtag)
-  expose(:instagram_medias)   { hashtag.instagram_medias }
+  expose(:current_page)       { params[:page] }
+  expose(:instagram_medias)   { hashtag.instagram_medias.page(current_page).per(50) }
   # expose(:autoexpanded_media) { params[:autoexpand] }
 
   def show

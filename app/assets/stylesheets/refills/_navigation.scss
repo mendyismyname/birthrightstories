@@ -17,7 +17,7 @@ header.navigation {
 
   background-color: $navigation-background;
   border-bottom: 1px solid darken($navigation-background, 10);
-  font-family: $sans-serif;
+  font-family: $header-font-family;
   height: $navigation-height;
   width: 100%;
   z-index: 999;
@@ -27,6 +27,10 @@ header.navigation {
 
   &.smaller{
     height: $navigation-height-small;
+
+    .logo img{
+      max-height: $navigation-height-small;
+    }
   }
 
   .menu-wrapper {
@@ -208,7 +212,7 @@ header.navigation {
     }
   }
 
-  a.sign-up {
+  a.taglit {
     margin-top: 13px;
     float: right;
     @include transition (all 0.2s ease-in-out);
