@@ -20,4 +20,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt:
-  flag_icon: 'localization/flag_Portuguese.jpg'
+  locale_name: 'Português'
+
+  images:
+    flag: 'localization/flag_Portuguese.jpg'
+    stories_count: '400comma.png'
+
+  header:
+    headline: ''
+    follow_up: ''
+    learn_more: ''
+    taglit_hash: '#Taglit'
+    stories_count_img: '400comma.png'
+
+  whats_yours_form:
+    first_name: ''
+    last_name: ''
+    email: ''
+    upload_photo: ''
+    choose_file: ''
+    story: ''
+    terms: ''
+    submit: ''
+
+    errors:
+      email: ''
+      upload_photo: ''
+      story: ''
+      terms: ''
+
+  learn_more_dropdown:
+    remember_from_today: ''
+    remember_from_yesterday: ''
+    summary_one: ''
+    summary_two: ''
+
+  hover_state:
+    view_this: ''
+    story: ''

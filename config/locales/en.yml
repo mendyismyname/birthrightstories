@@ -20,4 +20,41 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  flag_icon: 'localization/flag_English.jpg'
+  locale_name: 'English'
+
+  images:
+    flag: 'localization/flag_English.jpg'
+    stories_count: '400comma.png'
+
+  header:
+    headline: 'BIRTHRIGHT STORIES'
+    follow_up: 'WHAT’S YOURS?'
+    learn_more: 'Learn More'
+    taglit_hash: '#Taglit'
+    stories_count_img: '400comma.png'
+
+  whats_yours_form:
+    first_name: 'FIRST NAME'
+    last_name: 'LAST NAME'
+    email: 'EMAIL'
+    upload_photo: 'UPLOAD A PHOTO (OPTIONAL)'
+    choose_file: 'CHOOSE FILE'
+    story: 'WHAT’S YOUR BIRTHRIGHT STORY?'
+    terms: 'I ACCEPT THE TERMS AND CONDITIONS'
+    submit: 'SUBMIT'
+
+    errors:
+      email: 'PLEASE ENTER A VALID EMAIL ADDRESS'
+      upload_photo: 'SUPPLY YOUR IMAGE IN PNG OR JPEG FORMAT UP TO 3MB IN SIZE'
+      story: 'UP TO 100 WORDS'
+      terms: "WE CAN'T SUBMIT YOUR STORY UNLESS YOU ACCEPT THE TERMS AND CONDITIONS"
+
+  learn_more_dropdown:
+    remember_from_today: 'What will you remember about today?'
+    remember_from_yesterday: 'About yesterday? Last year?'
+    summary_one: 'We create, capture and share things every day that quickly move in and out of our minds and our newsfeeds. But there’s a difference between a fleeting memory and a real story.'
+    summary_two: 'A real story lives on. A real story is worth sharing. This summer we celebrated 400,000 participants of Taglit-Birthright Israel - 400,000 moments and memories we call Taglit Stories. What’s Yours?'
+
+  hover_state:
+    view_this: 'VIEW THIS'
+    story: 'STORY'

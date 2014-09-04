@@ -5,9 +5,11 @@
     
     .nav
       #navigation-caption
-        = image_tag '400comma.png'
-        %p.subtitle Birthright Stories
-        = link_to '#', "What's Yours?"
+        = image_tag t('header.stories_count_img')
+        %p.subtitle= t('header.headline')
+        = link_to '#' do 
+          = t('header.follow_up')
+           
 
     -# %p#js-mobile-menu.navigation-menu-button MENU
     -# .nav
@@ -31,8 +33,18 @@
       -#     %input{:placeholder => "Enter Search", :type => "search"}/
       -#     %button{:type => "submit"}
       -#       %img{:alt => "", :src => "https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png"}/
+    
       = link_to '#', class: 'taglit' do 
-        = '#Taglit'
+        = t('header.taglit_hash')
 
-      .locale-menu
-        = image_tag t('flag_icon')
+      .nav-locale
+        = image_tag t('images.flag')
+        %ul.locale-menu
+          - I18n.available_locales.each do |locale|
+            %li.nav-link
+              = link_to url_for(locale: locale) do
+                = t('locale_name', locale: locale)
+                = image_tag t('images.flag', locale: locale)
+
+
+.navigation-buffer

@@ -1,9 +1,11 @@
+$navigation-height: 250px;
+
 header.navigation {
   $navigation-padding: 1em;
   $navigation-background: rgba(0, 157, 220, 0.901961);
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
-  $navigation-height: 250px;
+  // $navigation-height: 250px !default;
   $navigation-height-small: 50px;
   $navigation-caption-width: 250px;
   $navigation-nav-button-background: $base-accent-color;

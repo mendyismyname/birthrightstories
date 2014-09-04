@@ -21,8 +21,9 @@ gem 'friendly_id'
 gem 'decent_exposure'
 
 # Localization
-gem 'rails-i18n', '~> 4.0.0'
 gem 'http_accept_language'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-translate-routes'
 
 # Sharepoint
 # gem 'sharepoint-ruby'
