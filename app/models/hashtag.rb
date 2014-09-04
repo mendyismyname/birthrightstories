@@ -40,7 +40,11 @@ class Hashtag < ActiveRecord::Base
     Instagram.client.tag_recent_media(tag_name)
   end
 
-  def self.scrape(tag_name)
+  def self.scrape_all
+    scrape('birthrightstories')
+  end
+
+  def self.scrape(tag_name, min_tag_id=nil, max_tag_id=nil)
     tag = Hashtag.where(name: tag_name).first_or_create
 
     instagram_media_for_hashtag(tag_name).each do |media_hash|

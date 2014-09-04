@@ -21,5 +21,5 @@
 
 
 every 1.days do
-  runner "Tag.refresh_all_instagram_media"
+  runner "Hashtag.scrape_all"
 end
