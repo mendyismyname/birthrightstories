@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+
+# Core
 gem 'rails', '4.1.5'
 gem 'mysql2'
-gem 'decent_exposure'
-gem 'friendly_id'
-gem 'possibly', '~> 0.1.1' # Maybe monad
-gem 'rails-i18n', '~> 4.0.0'
 
 # Webserver
 group :staging, :production do
@@ -16,6 +14,15 @@ end
 group :development do
   gem 'thin'
 end
+
+# Primary
+gem 'possibly', '~> 0.1.1' # Maybe monad
+gem 'friendly_id'
+gem 'decent_exposure'
+
+# Localization
+gem 'rails-i18n', '~> 4.0.0'
+gem 'http_accept_language'
 
 # Sharepoint
 # gem 'sharepoint-ruby'
@@ -48,8 +55,6 @@ gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'sprockets', '2.11.0'  # Needed to fix stylesheet bug 2 for 1 arguments
-# gem 'sprockets-derailleur' # Multicore asset processing
-# gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Design
 gem 'normalize-rails'

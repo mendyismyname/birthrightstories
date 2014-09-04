@@ -4,8 +4,16 @@ class ApplicationController < ActionController::Base
 
   layout 'application'
 
+  before_filter :set_locale
+
   def permitted_params
     @permitted_params ||= ::PermittedParams.new(params, current_user)
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = params[:locale].present? ? params[:locale] : http_accept_language.compatible_language_from(I18n.available_locales)
   end
 
 end
