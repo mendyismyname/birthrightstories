@@ -1,39 +1,48 @@
-%header.navigation
-  .menu-wrapper
-    = link_to '#', class: 'logo' do
-      = image_tag 'large_logo.png'
-    
-    .nav
-      #navigation-caption
-        = image_tag t('header.stories_count_img')
-        %p.subtitle= t('header.headline')
-        = link_to '#' do 
-          = t('header.follow_up')
-           
 
-    %p#js-mobile-menu.navigation-menu-button MENU
-    .nav
-      %ul#navigation-menu
+%header.centered-navigation
+  .centered-navigation-wrapper
 
-        %li.nav-link
-          = link_to '#' do
-            = t('header.taglit_hash')
-        %li.nav-link.more
-          = link_to '#' do
-            = image_tag t('images.flag')
-          %ul.submenu
-            - I18n.available_locales.each do |locale|
-              %li
-                = link_to url_for(locale: locale) do
-                  = t('locale_name', locale: locale)
-                  = image_tag t('images.flag', locale: locale)
+    -# -# Mobile Logo
+    -# = link_to '#', class: 'mobile-logo' do
+    -#   = image_tag t('images.logo_small')
 
-    .navigation-tools
-      -# .search-bar
-      -#   .search-and-submit
-      -#     %input{:placeholder => "Enter Search", :type => "search"}/
-      -#     %button{:type => "submit"}
-      -#       %img{:alt => "", :src => "https://raw.githubusercontent.com/Magnus-G/Random/master/search-icon.png"}/
-    
+    .centered-navigation-logo
+      = link_to '#' do
+        = image_tag t('images.logo_large')
+        -# = image_tag t('images.logo_small')
 
-.navigation-buffer
+    %ul.centered-navigation-panel
+      %li.nav-story-count
+        %span= current_story_count 
+        -# = image_tag  t('images.stories_count')
+      %li.nav-headline
+        %span= t('header.headline')
+      %li.nav-follow-up
+        %button= t('header.follow_up')
+      %li.nav-learn-more
+        = link_to t('header.learn_more'), '#', onclick: "$('.centered-navigation-drawer').toggleClass('opened'); return false;"
+
+    -# Mobile Menu
+    .centered-navigation-menu
+      = link_to '#' do
+        %span.taglit= t('header.taglit_hash')
+        = image_tag t('images.flag', height: 60)     
+
+        %ul.centered-navigation-submenu
+          - other_available_locales.each do |locale|
+            %li
+              = link_to url_for(locale: locale) do
+                .locale
+                  %span.locale-name= t('locale_name', locale: locale)
+                  %span.locale-flag= image_tag t('images.flag', locale: locale), height: 20
+
+  .centered-navigation-drawer
+    .centered-navigation-drawer-wrapper
+
+      %h1= t('learn_more_dropdown.remember_from_today')
+      %h2= t('learn_more_dropdown.remember_from_yesterday')
+      %p= t('learn_more_dropdown.summary_one')
+      %p= t('learn_more_dropdown.summary_two')
+
+      = link_to '#', onclick: "$('.centered-navigation-drawer').removeClass('opened'); return false;" do
+        = t('learn_more_dropdown.close')

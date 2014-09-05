@@ -2,15 +2,18 @@
   -webkit-font-smoothing: antialiased;
   background-color: $base-button-color;
   border-radius: $base-border-radius;
-  color: white;
+  color: $taglit-blue;
   display: inline-block;
   font-size: $base-font-size;
   font-weight: bold;
   line-height: 1;
-  padding: .75em 1em;
+  padding: .3em 0.9em;
   text-decoration: none;
 
+  border: 0.2em solid transparentize($taglit-blue, 0.1);
+
   &:hover {
+    border: 0.2em solid white;
     background-color: $hover-button-color;
     color: white;
   }
