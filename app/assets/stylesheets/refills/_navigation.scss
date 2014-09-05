@@ -119,6 +119,9 @@ header.centered-navigation {
           // @include transition (all 0.3s ease-in-out);
         }  
       } 
+      &.nav-follow-up a{
+        @extend button;
+      }
 
       @include media(em(550)) {
         line-height: 1.3;

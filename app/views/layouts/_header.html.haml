@@ -18,9 +18,9 @@
       %li.nav-headline
         %span= t('header.headline')
       %li.nav-follow-up
-        %button= t('header.follow_up')
+        = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
       %li.nav-learn-more
-        = link_to t('header.learn_more'), '#', onclick: "$('.centered-navigation-drawer').toggleClass('opened'); return false;"
+        = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
 
     -# Mobile Menu
     .centered-navigation-menu
@@ -36,7 +36,31 @@
                   %span.locale-name= t('locale_name', locale: locale)
                   %span.locale-flag= image_tag t('images.flag', locale: locale), height: 20
 
-  .centered-navigation-drawer
+  #header-form.centered-navigation-drawer
+    .centered-navigation-drawer-wrapper
+
+      = form_tag '' do |f|
+        = label_tag :first_name, t('form.first_name')
+        = text_field_tag :first_name
+        
+        = label_tag :last_name, t('form.last_name')
+        = text_field_tag :last_name
+        
+        = label_tag :photo, t('form.photo')
+        = text_field_tag :photo
+        
+        = label_tag :choose_file, t('form.choose_file')
+        = text_field_tag :choose_file
+        
+        = label_tag :story, t('form.story')
+        = text_field_tag :story
+        
+        = label_tag :terms, t('form.terms')
+        = text_field_tag :terms
+        
+        %button 'submit'
+
+  #header-learn.centered-navigation-drawer
     .centered-navigation-drawer-wrapper
 
       %h1= t('learn_more_dropdown.remember_from_today')
@@ -44,5 +68,5 @@
       %p= t('learn_more_dropdown.summary_one')
       %p= t('learn_more_dropdown.summary_two')
 
-      = link_to '#', onclick: "$('.centered-navigation-drawer').removeClass('opened'); return false;" do
+      = link_to '#', onclick: "$('#header-learn').removeClass('opened'); return false;" do
         = t('learn_more_dropdown.close')
