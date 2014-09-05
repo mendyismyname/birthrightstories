@@ -1,3 +1,7 @@
+
+// Have to expose var bc of buffer that is needed
+$centered-navigation-height-large: 300px;
+
 header.centered-navigation {
 
   // $centered-navigation-padding: 1em;
@@ -6,7 +10,6 @@ header.centered-navigation {
   $centered-navigation-color: transparentize($centered-navigation-base-color, 0.3);
   $centered-navigation-color-hover: $centered-navigation-base-color;
   $centered-navigation-height: 60px;
-  $centered-navigation-height-large: 300px;
   $centered-navigation-background: $taglit-blue;
   $centered-navigation-border-bottom-width: 3px;
   $centered-navigation-side-section-width: 20%;
@@ -59,6 +62,9 @@ header.centered-navigation {
       top: 1.5em;
       right: 3em;
     }
+    .centered-navigation-buffer{
+      height: $centered-navigation-height;
+    }
   }
 
   .centered-navigation-wrapper{
@@ -103,7 +109,7 @@ header.centered-navigation {
     width: 280px;
     color: white;
     padding: 3em 0;
-    // @include transition (all 0.3s ease-in-out);
+    @include transition (all 0.3s ease-in-out);
     
 
     li{
@@ -113,11 +119,6 @@ header.centered-navigation {
 
       &.nav-story-count{
         font-size: 4.6em;
-        img{
-          max-height: 100%;
-          line-height:0;
-          // @include transition (all 0.3s ease-in-out);
-        }  
       } 
       &.nav-follow-up a{
         @extend button;
@@ -236,4 +237,10 @@ header.centered-navigation {
 
   }
 
+}
+
+// This cancels out the fixed position header from displacing images at first
+.centered-navigation-buffer{
+  height: $centered-navigation-height-large;
+  display: block;
 }
