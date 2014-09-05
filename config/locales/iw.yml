@@ -23,6 +23,8 @@ iw:
   locale_name: 'עברית'
 
   images:
+    logo_small: 'small_logo.png'
+    logo_large: 'large_logo.png'
     flag: 'localization/flag_Hebrew.jpg'
     stories_count: '400comma.png'
 
@@ -31,7 +33,6 @@ iw:
     follow_up: ''
     learn_more: ''
     taglit_hash: '#Taglit'
-    stories_count_img: '400comma.png'
 
   whats_yours_form:
     first_name: ''

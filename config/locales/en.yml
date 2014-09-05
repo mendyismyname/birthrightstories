@@ -23,6 +23,8 @@ en:
   locale_name: 'English'
 
   images:
+    logo_small: 'small_logo.png'
+    logo_large: 'large_logo.png'
     flag: 'localization/flag_English.jpg'
     stories_count: '400comma.png'
 
@@ -31,7 +33,6 @@ en:
     follow_up: 'WHAT’S YOURS?'
     learn_more: 'Learn More'
     taglit_hash: '#Taglit'
-    stories_count_img: '400comma.png'
 
   whats_yours_form:
     first_name: 'FIRST NAME'

@@ -23,6 +23,8 @@ fr:
   locale_name: 'Français'
 
   images:
+    logo_small: 'small_logo.png'
+    logo_large: 'large_logo.png'
     flag: 'localization/flag_French.jpg'
     stories_count: '400comma.png'
 
@@ -31,7 +33,6 @@ fr:
     follow_up: ''
     learn_more: ''
     taglit_hash: '#Taglit'
-    stories_count_img: '400comma.png'
 
   whats_yours_form:
     first_name: ''
