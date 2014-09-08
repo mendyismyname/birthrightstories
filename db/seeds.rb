@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Hashtag.create(name: 'birthrightstories')
+
+AdminUser.create!(
+  email:                 'social@mlln.nl',
+  password:              'TheFuture',
+  password_confirmation: 'TheFuture')

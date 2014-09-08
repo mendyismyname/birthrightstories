@@ -18,6 +18,7 @@
 #  updated_at        :datetime
 #  instagram_user_id :string(255)
 #  media_type        :string(255)
+#  is_displayable    :boolean          default(FALSE)
 #
 
 class InstagramMedia < ActiveRecord::Base
@@ -60,8 +61,15 @@ class InstagramMedia < ActiveRecord::Base
     end
   end
 
+  %w(likes comments users_in_photo).each do |field|
+    define_method "#{field}_count" do
+      field.size      
+    end
+  end
+
   def caption_text
     caption['text']
   end
+
 
 end

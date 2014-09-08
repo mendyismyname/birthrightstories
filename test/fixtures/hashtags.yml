@@ -8,6 +8,9 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  slug         :string(255)
+#  min_tag_id   :integer
+#  max_tag_id   :integer
+#  is_active    :boolean          default(TRUE)
 #
 # Indexes
 #

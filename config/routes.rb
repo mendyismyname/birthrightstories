@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   scope ':locale', locale: /#{I18n.available_locales.join("|")}/ do
 
     resources :hashtag, only: [:show]
@@ -13,4 +16,4 @@ Rails.application.routes.draw do
   get '/*path', to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_unfound
 end
 
-ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { no_prefixes: true })
+# ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { no_prefixes: true })

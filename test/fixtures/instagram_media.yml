@@ -18,6 +18,7 @@
 #  updated_at        :datetime
 #  instagram_user_id :string(255)
 #  media_type        :string(255)
+#  is_displayable    :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

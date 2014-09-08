@@ -32,7 +32,9 @@ gem 'rails-translate-routes'
 gem 'instagram'
 
 # Admin Panel
-# gem 'activeadmin', github: 'activeadmin'
+gem 'devise' # Needed for activeadmin
+gem 'activeadmin', github: 'activeadmin'
+
 
 # # Background Processing
 gem 'daemons'
