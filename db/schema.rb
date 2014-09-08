@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905232224) do
+ActiveRecord::Schema.define(version: 20140908151040) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -88,22 +88,6 @@ ActiveRecord::Schema.define(version: 20140905232224) do
 
   add_index "hashtags", ["slug"], name: "index_hashtags_on_slug", unique: true, using: :btree
 
-  create_table "instagram_images", force: true do |t|
-    t.string   "tags"
-    t.string   "users_in_photo"
-    t.string   "filter"
-    t.string   "comments"
-    t.string   "caption"
-    t.string   "likes"
-    t.string   "link"
-    t.integer  "instagram_user_id"
-    t.string   "images"
-    t.integer  "instagram_media_id"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "instagram_media", force: true do |t|
     t.text     "users_in_photo"
     t.string   "filter"
@@ -142,12 +126,6 @@ ActiveRecord::Schema.define(version: 20140905232224) do
     t.integer  "media_count"
     t.integer  "follows_count"
     t.integer  "followed_by_count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
