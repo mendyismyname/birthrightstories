@@ -22,6 +22,8 @@ class Hashtag < ActiveRecord::Base
   has_many :instagram_media_hashtags
   has_many :instagram_medias, through: :instagram_media_hashtags
 
+  validates :name, presence: true
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 

@@ -6,7 +6,7 @@
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     -# = favicon_link_tag 'favicon.png'
-    -# = csrf_meta_tags
+    = csrf_meta_tags
 
   %body
 
@@ -16,18 +16,12 @@
       =render 'layouts/header'
 
       / Alerts
-      .app-alerts= render 'layouts/alerts'
+      .app-alerts
+        = render 'layouts/alerts'
 
       / Main Application
       .app-main
-
-        / Sidebar
-        - if content_for? :sidebar
-          = yield :sidebar
-
-        / Content
-        .app-content
-          = yield
+        = yield
 
     / Deferred Javascript for improved load performance    
     - if content_for? :deferred_js

@@ -21,5 +21,5 @@
 
 
 every 1.days do
-  runner "Hashtag.scrape_all"
+  runner "HashtagScraper.update_all"
 end
