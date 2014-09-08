@@ -29,33 +29,33 @@ fr:
     stories_count: '400comma.png'
 
   header:
-    headline: ''
-    follow_up: ''
-    learn_more: ''
+    headline: 'HISTOIRES DE TAGLIT'
+    follow_up: 'QUELLE EST LA TIENNE?'
+    learn_more: 'En savoir plus '
     taglit_hash: '#Taglit'
 
   whats_yours_form:
-    first_name: ''
-    last_name: ''
-    email: ''
-    upload_photo: ''
-    choose_file: ''
-    story: ''
-    terms: ''
-    submit: ''
+    first_name: 'PRÉNOM'
+    last_name: 'NOM'
+    email: 'EMAIL'
+    upload_photo: 'PROPOSER UNE PHOTO (OPTION)'
+    choose_file: 'CHOISIR UN FICHIER'
+    story: 'QUEL EST TON HISTOIRE DE TAGLIT'
+    terms: "J'ACCEPTE LES TERMES ET CONDITIONS"
+    submit: 'SOUMETTRE'
 
     errors:
-      email: ''
-      upload_photo: ''
-      story: ''
-      terms: ''
+      email: 'ENTRER UNE ADRESSE MAIL VALIDE'
+      upload_photo: "ATTACHER VOTRE IMAGES AU FORMAT PNG OU JPEG JUSQU'A UNE TAILLE DE 3MB"
+      story: 'MAXIMUM DE 100 MOTS'
+      terms: "NOUS NE POUVONS PAS ACCEPTER VOTRE HISTOIRE SI LES TERMES ET CONDITIONS N'ON PAS ÉTÉ ACCEPTER"
 
   learn_more_dropdown:
-    remember_from_today: ''
-    remember_from_yesterday: ''
-    summary_one: ''
-    summary_two: ''
+    remember_from_today: "Quels souvenirs garderez-vous d'aujourd'hui ? "
+    remember_from_yesterday: "D'hier ? De l''année dernière ?"
+    summary_one: "Nous créons, capturons et partageons des moments de tous les jours qui traversent rapidement nos esprits et notre fils d'actualité. Mais il y a une différence entre un souvenir fugace et une histoire vraie."
+    summary_two: "Une histoire vraie demeure. Une histoire vraie mérite d'être partagée. Cet été, nous avons célébré 400 000 participants au Taglit - 400 000 moments et souvenirs que nous appelons Histoires de Taglit. Quelle est la tienne ?"
 
   hover_state:
-    view_this: ''
-    story: ''
+    view_this: 'VOIR CETTE'
+    story: 'HISTOIRE'

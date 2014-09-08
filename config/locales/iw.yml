@@ -29,33 +29,33 @@ iw:
     stories_count: '400comma.png'
 
   header:
-    headline: ''
-    follow_up: ''
-    learn_more: ''
+    headline: 'סיפורי תגלית'
+    follow_up: 'מה הסיפור שלך?'
+    learn_more: 'לפרטים נוספים'
     taglit_hash: '#Taglit'
 
   whats_yours_form:
-    first_name: ''
-    last_name: ''
-    email: ''
-    upload_photo: ''
-    choose_file: ''
-    story: ''
-    terms: ''
-    submit: ''
+    first_name: 'שם פרטי'
+    last_name: 'שם משפחה'
+    email: 'כתובת אימייל'
+    upload_photo: 'העלה תמונה (אופציונלי)'
+    choose_file: 'בחר קובץ'
+    story: 'מה הסיפור תגלית שלך?'
+    terms: 'אני מקבל/ת את תנאי ההסכם'
+    submit: 'הגש'
 
     errors:
-      email: ''
-      upload_photo: ''
-      story: ''
-      terms: ''
+      email: 'אנא עדכן כתובת אימייל'
+      upload_photo: 'הוסף קובץ JPEG או PNG עד לגודל 3MB'
+      story: 'עד 100 מילים'
+      terms: 'לא ניתן לפרסם את הסיפור שלך ללא אישור לתנאי ההסכם'
 
   learn_more_dropdown:
-    remember_from_today: ''
-    remember_from_yesterday: ''
-    summary_one: ''
-    summary_two: ''
+    remember_from_today: 'מה תזכרו על היום הזה?'
+    remember_from_yesterday: 'על מחר? על השנה שעברה?'
+    summary_one: 'בכל יום אנחנו יוצרים, מנציחים ומשתפים דברים שנכנסים לראש ולצירי הזמן שלנו ויוצאים מהם במהירות. אבל יש הבדל בין זיכרון חולף לסיפור אמיתי.'
+    summary_two: 'סיפור אמיתי ממשיך להתקיים. ראוי לשתף סיפור אמיתי. בקיץ הזה חגגנו ציון דרך של 400,000 משתתפים בתגלית - 400,000 רגעים וזיכרונות, להם אנחנו קוראים סיפורי תגלית. מה הסיפור שלך?'
 
   hover_state:
-    view_this: ''
-    story: ''
+    view_this: 'הצג את'
+    story: 'הסיפור'
