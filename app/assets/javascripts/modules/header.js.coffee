@@ -53,8 +53,3 @@ $ ->
     $('header').toggleClass 'smaller', distanceY > shrinkOn
     $('.centered-navigation-drawer').removeClass 'opened' if distanceY > shrinkOn
 
-
-  $('.instagram-media-card').clone().appendTo('.page')
-  $('.instagram-media-card').clone().appendTo('.page')
-  $('.instagram-media-card').clone().appendTo('.page')
-  $('.instagram-media-card').clone().appendTo('.page')

@@ -2,15 +2,16 @@
 #
 # Table name: hashtags
 #
-#  id           :integer          not null, primary key
-#  name         :string(255)
-#  refreshed_at :datetime
-#  created_at   :datetime
-#  updated_at   :datetime
-#  slug         :string(255)
-#  min_tag_id   :integer
-#  max_tag_id   :integer
-#  is_active    :boolean          default(TRUE)
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  refreshed_at    :datetime
+#  created_at      :datetime
+#  updated_at      :datetime
+#  slug            :string(255)
+#  min_tag_id      :string(255)      default("0")
+#  max_tag_id      :string(255)
+#  is_active       :boolean          default(TRUE)
+#  instagram_count :integer          default(0)
 #
 # Indexes
 #
@@ -27,54 +28,11 @@ class Hashtag < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  def min_tag_id
-    nil
-  end
-
-  def max_tag_id
-    nil
-  end
-
-  def self.refresh_all_instagram_media
-    Hashtag.find_each do |tag|
-      DelayedJob.enque InstagramTagScrapeWorker.new(tag.name, tag.min_tag_id, tag.max_tag_id)
-    end
-  end
-
-  def self.instagram_media_for_hashtag(tag_name)
-    Instagram.client.tag_recent_media(tag_name)
-  end
-
-  def self.scrape_all
-    scrape('birthrightstories')
-  end
-
-  def self.scrape(tag_name, min_tag_id=nil, max_tag_id=nil)
-    tag = Hashtag.where(name: tag_name).first_or_create
-
-    instagram_media_for_hashtag(tag_name).each do |media_hash|
-      # begin
-        InstagramMedia.where(instagram_id: media_hash.id).first_or_initialize do |media|
-
-          user = InstagramUser.where(instagram_id: media_hash.user.id).first_or_initialize do |user|
-         
-            attrs = InstagramMapper::Media.to_instagram_user(media_hash)
-            user.update_attributes attrs
-          end
-
-          attrs = InstagramMapper::Media.to_instagram_media(media_hash)
-          media.assign_attributes attrs
-          media.instagram_user = user
-          media.hashtags << tag
-          
-
-          media.save
-        end
-      # rescue
-      #   puts 'Instagram Scrape Error'
-      #   puts media_hash
-      # end
-    end
-  end
+  # def self.persist_refresh(options, max_tag_id)
+  #   Hashtag.where(options).update_attributes {
+  #     refreshed_at: Datetime.now,
+  #     max_tag_id:   max_tag_id
+  #   }
+  # end
 
 end

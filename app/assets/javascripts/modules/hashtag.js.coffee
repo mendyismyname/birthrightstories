@@ -7,7 +7,10 @@ $ ->
     itemSelector: '.instagram-media-card'      # selector for all items you'll retrieve
     loading:
       finishedMsg: ''
-      img:         'http://i.imgur.com/6RMhx.gif'
+      img:         null
+      msg:         null
+      msgText:     ''
+
 
   container.imagesLoaded ->
     console.log 'all images loaded'
