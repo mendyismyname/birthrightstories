@@ -1,0 +1,20 @@
+namespace :redis do
+  desc "Install the latest release of Redis"
+  task :install do
+    on roles(:app) do
+      sudo "add-apt-repository ppa:chris-lea/redis-server"
+      sudo "apt-get -y update"
+      sudo "apt-get -y install redis-server"
+    end
+  end
+
+  %w[start stop restart].each do |command|
+    desc "#{command} redis"
+    task command do
+      on roles(:web) do
+        sudo "service redis-server #{command}"
+      end
+    end
+  end
+
+end
