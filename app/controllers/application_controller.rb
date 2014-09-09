@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_locale_from_url
 
-  def permitted_params
-    @permitted_params ||= ::PermittedParams.new(params, current_user)
-  end
+  # def permitted_params
+  #   @permitted_params ||= ::PermittedParams.new(params, current_user)
+  # end
 
   private
 
