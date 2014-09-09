@@ -28,6 +28,9 @@ gem 'rails-translate-routes'
 # Sharepoint
 # gem 'sharepoint-ruby'
 
+# Emojis
+# gem 'demoji'
+
 # Instagram
 gem 'instagram'
 
