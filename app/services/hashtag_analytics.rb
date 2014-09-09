@@ -15,9 +15,11 @@ module HashtagAnalytics
   def save_top_performing_images(tag_name)
     top_performing(tag_name).each do |instagram_media|
       
+      splitter = '__SPLITTER__'
       file_uri = instagram_media.standard_resolution_image_url
       file_ext = file_uri.split('.').last
-      filename = "instagram_id_#{instagram_media.instagram_id}_username_#{instagram_media.instagram_user.username}.#{file_ext}"
+      filename = ["instagram_id_#{instagram_media.instagram_id}", 
+                  "username_#{instagram_media.instagram_user.username}.#{file_ext}"].join(splitter)
 
       open([Rails.root,'photoshop_images', filename].join('/'), 'wb') do |file|
         file << open(file_uri).read
