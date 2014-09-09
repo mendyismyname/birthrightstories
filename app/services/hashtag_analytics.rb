@@ -4,8 +4,8 @@ module HashtagAnalytics
   module_function
 
   def top_performing(tag_name, top_performing_limit = 3)
-    top_performing = Hashtag.where(name: tag_name).first.instagram_medias.find_each.group_by(&:instagram_user_id).map do |instagram_user_id, instagram_medias|
-      instagram_medias.sort_by(&:engagement).first(top_performing_limit)
+    top_performing = Hashtag.where(name: tag_name).first.instagram_medias.group_by(&:instagram_user_id).map do |instagram_user_id, instagram_medias|
+      instagram_medias.sort_by(&:engagement).last(top_performing_limit)
     end
     top_performing.flatten
   end
