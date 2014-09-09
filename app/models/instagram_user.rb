@@ -20,4 +20,8 @@ class InstagramUser < ActiveRecord::Base
 
   has_many :instagram_medias
   
+  def username_tag
+    "@#{username}"
+  end
+  
 end

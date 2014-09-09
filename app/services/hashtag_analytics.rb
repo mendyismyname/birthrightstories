@@ -12,6 +12,7 @@ module HashtagAnalytics
 
   # To Call: 
   # HashtagAnalytics.save_top_performing_images('xxxyx')
+  # HashtagAnalytics.save_top_performing_images('taglit')
   def save_top_performing_images(tag_name)
     top_performing(tag_name).each do |instagram_media|
       
@@ -22,7 +23,6 @@ module HashtagAnalytics
       open([Rails.root,'photoshop_images', filename].join('/'), 'wb') do |file|
         file << open(file_uri).read
       end
-
     end
   end
 

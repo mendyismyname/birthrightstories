@@ -23,24 +23,35 @@
 
 class InstagramMedia < ActiveRecord::Base
 
+  # LIKES_MULTIPLIER = 3
+  # COMMENTS_MULTIPLIER = 2
+  # USERS_IN_PHOTO_MULTIPLIER = 1
+
   delegate :full_name, to: :instagram_user, prefix: true
 
   belongs_to :instagram_user
   has_many :instagram_media_hashtags
   has_many :hashtags, through: :instagram_media_hashtags
-  
+
   validates :instagram_id, uniqueness: true
 
-  serialize :tags,           Array 
+  serialize :tags,           Array
   serialize :likes,          Array
-  serialize :images,         Hash 
-  serialize :videos,         Hash 
-  serialize :caption,        Hash 
-  serialize :location,       Hash 
+  serialize :images,         Hash
+  serialize :videos,         Hash
+  serialize :caption,        Hash
+  serialize :location,       Hash
   serialize :comments,       Array
-  serialize :users_in_photo, Array 
+  serialize :users_in_photo, Array
+
+  scope :randomized, -> { order('RAND()') }
 
   before_save :serialize_attrs
+
+  DATA_ATTRIBUTES = [:standard_resolution_image_url,
+                     :instagram_user_full_name,
+                     :caption_text,
+                     :instagram_user_id]
 
   def serialize_attrs
     self.tags = JSON.parse self.tags.to_json
@@ -63,7 +74,7 @@ class InstagramMedia < ActiveRecord::Base
 
   %w(likes comments users_in_photo).each do |field|
     define_method "#{field}_count" do
-      field.size      
+      field.size
     end
   end
 
@@ -71,5 +82,18 @@ class InstagramMedia < ActiveRecord::Base
     caption['text']
   end
 
+  def to_data
+    DATA_ATTRIBUTES.reduce({}) do |result, field|
+      result[field] = self.send(field)
+      result
+    end
+  end
+
+  def engagement
+    likes_count
+    # (LIKES_MULTIPLIER * likes_count) +
+    #   (COMMENTS_MULTIPLIER * comments_count) +
+    #   (USERS_IN_PHOTO_MULTIPLIER * users_in_photo_count)
+  end
 
 end
