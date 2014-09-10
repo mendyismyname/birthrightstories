@@ -4,7 +4,7 @@ lock '3.2.1'
 set :application, 'birthrightstories'
 set :repo_url, 'git@github.com:mendyismyname/birthrightstories.git'
 
-Default branch is :master
+# Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
@@ -58,9 +58,10 @@ namespace :install do
       sudo "apt-get -y install python-software-properties"
       sudo "apt-get install -y git"
       sudo "apt-get install -y nodejs"
+      sudo "apt-get install -y memcached"
       sudo "apt-get install -y imagemagick"
       sudo "apt-get install -y libmagickwand-dev"
-      invoke 'redis:install'
+      # invoke 'redis:install'
       execute 'rvm get stable'
 
       # Manually
@@ -81,9 +82,9 @@ namespace :install do
   end
   task :rails_config do
     on roles(:app) do
-      # execute 'mkdir /home/rails/birthrightstories'
-      # execute 'mkdir /home/rails/birthrightstories/shared'
-      # execute 'mkdir /home/rails/birthrightstories/shared/config'
+      execute 'mkdir /home/rails/birthrightstories'
+      execute 'mkdir /home/rails/birthrightstories/shared'
+      execute 'mkdir /home/rails/birthrightstories/shared/config'
 
       execute 'cp /home/rails/birthrightstories/shared/config/config.yml /home/rails/birthrightstories/shared/config/config.backup.yml'
       execute 'cp /home/rails/birthrightstories/shared/config/database.yml /home/rails/birthrightstories/shared/config/database.backup.yml'
@@ -102,7 +103,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # invoke 'install:rails_config'
+      invoke 'install:rails_config'
       invoke 'delayed_job:restart' 
       invoke 'unicorn:stop'
       invoke 'unicorn:start'

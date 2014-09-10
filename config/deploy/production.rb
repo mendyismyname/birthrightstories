@@ -15,8 +15,17 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '104.131.9.54', user: 'root', roles: %w{web app}, ssh_options: { password: 'piwuidtstkkz' }
-
+server '104.131.9.54', 
+  user: 'root', 
+  roles: %w{web app db}, 
+  primary: true,
+  ssh_options: {
+    keys: %w(~/.ssh/birthrightstories.pub),
+    forward_agent: true,
+    password: 'TheFuture'
+    # verbose: :debug,
+    # auth_methods: %w(publickkey password)
+  }
 
 # Custom SSH Options
 # ==================
