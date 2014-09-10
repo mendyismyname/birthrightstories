@@ -15,20 +15,33 @@ ActiveAdmin.register InstagramMedia do
   # end
 
 
+  member_action :toggle_display, method: :put do
+    instagram_media = InstagramMedia.find(params[:id])
+    instagram_media.toggle_display
+    redirect_to admin_instagram_media_path, notice: "Updated!"
+  end
+
   index do
     id_column
-    column :is_displayable
 
+    actions defaults: false do |resource|
+      title = resource.is_displayable ? 'Disable' : 'Enable'
+      klass = resource.is_displayable ? 'yes' : 'no'
+      link_to toggle_display_admin_instagram_medium_path(resource), method: :put do 
+        content_tag(:span, title, class: "status_tag #{klass}")
+      end
+    end
+
+    # column :is_displayable
     column :thumbnail do |instagram_media|
       image_tag(instagram_media.thumbnail_image_url)
     end
-
     # column :user_full_name do |instagram_media|
     #   instagram_media.instagram_user.full_name
     # end
     column :username do |instagram_media|
       instagram_media.instagram_user.username
-    end    
+    end
 
     column :tags
     # column :instagram_id
