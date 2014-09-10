@@ -1,3 +1,7 @@
+
+@include font-face(GillSansStd, 'GillSansStd', normal, $asset-pipeline: true);
+@include font-face(GillSansStdBold, 'GillSansStd-Bold', bold, $asset-pipeline: true);
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;

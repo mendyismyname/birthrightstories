@@ -17,7 +17,7 @@ header.centered-navigation {
 
   background-color: $centered-navigation-background;
   border-bottom: $centered-navigation-border-bottom-width solid transparentize(white, 0.2);
-  font-family: Lato, 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  font-family: $header-font-family;
   font-weight: bold;
   color: $centered-navigation-color;
   height: $centered-navigation-height-large;
