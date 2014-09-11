@@ -189,6 +189,9 @@
         overflow: hidden;
         text-align: center;
     }
+    .media-card-blank{
+        @extend .media-card;
+    }
     .media-card-container {
         position: relative;
         overflow: hidden;

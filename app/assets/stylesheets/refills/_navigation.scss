@@ -298,5 +298,12 @@ header.nav{
 .nav-buffer{
   height: $nav-height-expanded;
   display: block;
-  @extend %nav-bg;
+  // @extend %nav-bg;
+
+  background-color: rgba(0,158,220,0);
+  // @include filter-gradient(#009edc, #009edc, vertical);
+  
+  // @include filter-gradient(#009edc, #009edc, vertical);
+  @include background-image(linear-gradient(top, rgba(0,158,220,1) 0%, rgba(0,158,220,0) 100%));
+  // @include background-image(linear-gradient(top, rgba(0,158,220,0) 0%, rgba(0,158,220,1) 100%));  
 }

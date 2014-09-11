@@ -26,6 +26,10 @@ $base-body-color: #eee;
 @import "instances/media-card";
 
 
+body{
+  background: #fff;
+}
+
 .hidden{
   visibility: hidden;
 }
