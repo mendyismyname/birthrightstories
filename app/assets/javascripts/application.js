@@ -2,6 +2,9 @@
 //= require jquery_ujs
 //= require jquery.scrollTo
 
+//= require react
+//= require components
+
 //= require masonry/jquery.imagesloaded.min
 //= require masonry/jquery.infinitescroll.min
 //

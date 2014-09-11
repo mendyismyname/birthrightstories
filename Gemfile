@@ -6,6 +6,7 @@ ruby '2.0.0'
 # Core
 gem 'rails', '4.1.5'
 gem 'mysql2'
+gem 'react-rails', '~> 0.5.1'
 
 # Webserver
 group :staging, :production do
