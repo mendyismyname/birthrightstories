@@ -15,6 +15,6 @@ test:
 production:
   <<: *default
   database:  birthrightstories_production
-  username:  rails
-  password:  G9ZEZnCDKO
+  username:  root
+  password:  TheFuture
   reconnect: true
