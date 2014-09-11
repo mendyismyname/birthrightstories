@@ -82,12 +82,12 @@ namespace :install do
   end
   task :rails_config do
     on roles(:app) do
-      execute 'mkdir /home/rails/birthrightstories'
-      execute 'mkdir /home/rails/birthrightstories/shared'
-      execute 'mkdir /home/rails/birthrightstories/shared/config'
+      # execute 'mkdir /home/rails/birthrightstories'
+      # execute 'mkdir /home/rails/birthrightstories/shared'
+      # execute 'mkdir /home/rails/birthrightstories/shared/config'
 
-      execute 'cp /home/rails/birthrightstories/shared/config/config.yml /home/rails/birthrightstories/shared/config/config.backup.yml'
-      execute 'cp /home/rails/birthrightstories/shared/config/database.yml /home/rails/birthrightstories/shared/config/database.backup.yml'
+      # execute 'cp /home/rails/birthrightstories/shared/config/config.yml /home/rails/birthrightstories/shared/config/config.backup.yml'
+      # execute 'cp /home/rails/birthrightstories/shared/config/database.yml /home/rails/birthrightstories/shared/config/database.backup.yml'
 
       upload! 'config/config.yml', '/home/rails/birthrightstories/shared/config/config.yml'
       upload! 'config/database.yml', '/home/rails/birthrightstories/shared/config/database.yml'

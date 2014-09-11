@@ -6,9 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Hashtag.create(name: 'birthrightstories')
+Hashtag.create(name: 'taglit')
 
 AdminUser.create!(
   email:                 'social@mlln.nl',
   password:              'TheFuture',
   password_confirmation: 'TheFuture')
+

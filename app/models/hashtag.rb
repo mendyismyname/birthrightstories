@@ -28,11 +28,15 @@ class Hashtag < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  # def self.persist_refresh(options, max_tag_id)
-  #   Hashtag.where(options).update_attributes {
-  #     refreshed_at: Datetime.now,
-  #     max_tag_id:   max_tag_id
-  #   }
-  # end
+  after_create :scrape_instagram
+
+  def persist_refresh(options)
+    update_attributes options.slice(:min_tag_id, :max_tag_id).compact.merge(refreshed_at: Datetime.now)
+  end
+
+  def scrape_instagram
+    HashtagScraper.fetch_tag_sequence(name)
+  end
 
 end
+

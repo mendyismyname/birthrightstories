@@ -44,9 +44,11 @@ class InstagramMedia < ActiveRecord::Base
   serialize :comments,       Array
   serialize :users_in_photo, Array
 
-  scope :randomized, -> { order('RAND()') }
+  scope :randomized,  -> { order('RAND()') }
+  scope :displayable, -> { where(is_displayable: true) }
 
   before_save :serialize_attrs
+  # before_save :sanitize_emoticons
 
   DATA_ATTRIBUTES = [:standard_resolution_image_url,
                      :instagram_user_full_name,
@@ -63,6 +65,11 @@ class InstagramMedia < ActiveRecord::Base
     self.comments = JSON.parse self.comments.to_json
     self.users_in_photo = JSON.parse self.users_in_photo.to_json
   end
+
+  # def sanitize_emoticons
+  #   self.username = EmojiSanitizer.parse username
+  #   self.username = EmojiSanitizer.parse username
+  # end
 
   %w(low_resolution thumbnail standard_resolution).each do |image_type|
     %w(url height width).each do |image_attribute|

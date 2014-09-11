@@ -18,8 +18,7 @@ module HashtagScraper
 
       options = Hash[next_url.split('?').last.split('&').map {|x| x.split('=')}]
                   .symbolize_keys
-                  .slice(:min_tag_id, :max_tag_id)
-      tag.update_attributes options
+      tag.persist_refresh options
     end
   end
 
@@ -50,10 +49,10 @@ module HashtagScraper
     end
   end
 
-  def update_all
-    Hashtag.find_each do |tag|
-      DelayedJob.enque InstagramTagScrapeWorker.new(tag.name, tag.min_tag_id, tag.max_tag_id)
-    end
-  end
+  # def update_all
+  #   Hashtag.find_each do |tag|
+  #     DelayedJob.enque InstagramTagScrapeWorker.new(tag.name, tag.min_tag_id, tag.max_tag_id)
+  #   end
+  # end
 
 end

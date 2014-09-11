@@ -23,5 +23,9 @@ class InstagramUser < ActiveRecord::Base
   def username_tag
     "@#{username}"
   end
+
+  def uri
+    "http://instagram.com/#{username}"
+  end
   
 end

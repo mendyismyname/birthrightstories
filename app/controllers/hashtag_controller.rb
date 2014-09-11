@@ -2,7 +2,7 @@ class HashtagController < ApplicationController
 
   expose(:hashtag)
   expose(:current_page)        { params[:page] }
-  expose(:instagram_medias)    { hashtag.instagram_medias.randomized.page(current_page).per(50) }
+  expose(:instagram_medias)    { hashtag.instagram_medias.displayable.randomized.page(current_page).per(48) }
   expose(:current_story_count) { '400,000' }
   # expose(:autoexpanded_media) { params[:autoexpand] }
 
