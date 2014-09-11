@@ -1,5 +1,33 @@
 @mixin grid-item-columns($columns) {
-  width: (100% / 12) * $columns;
+  $width: (100% / 12) * $columns;
+  $expanded-width: $width * 3;
+
+  // height:         0;
+  width:          $width;
+  // padding-bottom: $width;
+  // position: relative;
+
+  // padding-bottom: 100%;
+
+  // &:after{
+  //   content: '';
+  //   display: inline-block;
+  //   padding-top: 100%;
+  // }
+
+  &.grid-item-expanded{
+    width:       $expanded-width;
+    // padding-top: $expanded-width;
+    // padding-top: $expanded-width;
+  
+
+    .hover-tile-container {
+      &:after{
+        @include maintain-aspect-ratio(3 2);
+      }
+    }
+
+  }
 }
 
 .grid-items {
@@ -19,13 +47,13 @@
   $grid-item-large-columns: 2;
   $grid-item-big-columns: 3;
   $grid-item-color: white;
-  $grid-item-height: 14em;
+  // $grid-item-height: 14em;
 
   @include clearfix;
     
   .grid-item {
     @include transition (all 0.2s ease-in-out);
-    height: $grid-item-height;
+    // height: $grid-item-height;
     background: $grid-item-background;
     width: 100%;
     overflow: hidden;
@@ -48,19 +76,19 @@
       @include grid-item-columns($grid-item-large-columns);
     }
 
-    @for $i from 1 to 8 { // assign colors from $grid-item-colors list
-      &:nth-child(#{$i}) {
-        $background-from-list: nth($grid-item-colors, $i);
-        background-color: $background-from-list;
-        box-shadow: inset 0px 0px 1px 2px darken($background-from-list, 10);
-        &:hover {
-          background-color: darken($background-from-list, 10);
-          background-repeat: no-repeat;
-          background-position: top;
-          background-size: cover;
-        }
-      }
-    }
+    // @for $i from 1 to 8 { // assign colors from $grid-item-colors list
+    //   &:nth-child(#{$i}) {
+    //     $background-from-list: nth($grid-item-colors, $i);
+    //     background-color: $background-from-list;
+    //     box-shadow: inset 0px 0px 1px 2px darken($background-from-list, 10);
+    //     &:hover {
+    //       background-color: darken($background-from-list, 10);
+    //       background-repeat: no-repeat;
+    //       background-position: top;
+    //       background-size: cover;
+    //     }
+    //   }
+    // }
   }
 
   .grid-item img {

@@ -71,10 +71,11 @@ gem 'refills'
 
 # JS
 gem 'jquery-rails'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
-gem 'turbolinks-redirect'
+# gem 'jquery-turbolinks'
+# gem 'turbolinks'
+# gem 'turbolinks-redirect'
 gem 'masonry-rails'
+gem "jquery-scrollto-rails"
 
 ####################################
 # DEVELOPMENT

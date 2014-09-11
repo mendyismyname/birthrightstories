@@ -188,9 +188,8 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-turbolinks (2.1.0)
-      railties (>= 3.1.0)
-      turbolinks
+    jquery-scrollto-rails (1.4.3)
+      railties (> 3.1, < 5.0)
     jquery-ui-rails (5.0.0)
       railties (>= 3.2.16)
     json (1.8.1)
@@ -329,12 +328,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.3.0)
-      coffee-rails
-    turbolinks-redirect (0.0.1)
-      jquery-rails
-      railties
-      turbolinks
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -382,7 +375,7 @@ DEPENDENCIES
   instagram
   jazz_hands
   jquery-rails
-  jquery-turbolinks
+  jquery-scrollto-rails
   kaminari
   masonry-rails
   meta_request
@@ -402,8 +395,6 @@ DEPENDENCIES
   sprockets (= 2.11.0)
   terminal-notifier-guard
   thin
-  turbolinks
-  turbolinks-redirect
   uglifier
   unicorn (= 4.8.3)
   whenever

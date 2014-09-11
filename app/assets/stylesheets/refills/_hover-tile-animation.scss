@@ -1,28 +1,40 @@
 .hover-tile-outer {
   $hover-tile-height: 100%; //10em;
+  $hover-title-opacity: 0.9;
 
-  background-position: bottom;
-  background-size: cover;
+
+  // background-position: bottom;
+  // background-size: cover;
   // background: url("https://raw.github.com/Magnus-G/Random/master/mountains.png");
 
-  background-color: #BEB56E;
+  // background-color: #BEB56E;
   padding: 0 !important;
   // border: 1px solid $base-border-color;
   // height: $hover-tile-height;
   // margin-bottom: $base-line-height;
   cursor: pointer;
   
-  @include media($medium-screen) {
-    width: 40%;
-  }
+  // @include media($medium-screen) {
+  //   width: 40%;
+  // }
 
   .hover-tile-container {
-    height: $hover-tile-height;
+
+    position:relative;
+    // height: $hover-tile-height;
     overflow: hidden;
+    // display: block;
+  
+    background-position: bottom;
+    background-size: cover;    
+    &:after{
+      @include maintain-aspect-ratio;
+    }
   }
 
   .hover-tile-container:hover > .hover-tile {
-    @include transform(translate(0, -100%));
+    &.hover-tile-visible{ opacity: 0}
+    &.hover-tile-hidden{  opacity: $hover-title-opacity}
   }
 
   .hover-tile {
@@ -35,6 +47,8 @@
   }
 
   .hover-tile-visible {
+    opacity: 1;
+
     background-position: bottom;
     background-size: cover;    
     color: transparentize(white, .3);
@@ -42,10 +56,19 @@
     font-weight: 200;  
     padding-top: 2em;
     text-align: center;
+
+    // display: visible;
   }
 
   .hover-tile-hidden {
-    background: transparentize(black, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // @include transform(translate(0, -100%));
+    opacity: 0;
+    background: transparentize($taglit-blue, .2);
     h4 {
       margin-bottom: .5em;
     }
@@ -53,4 +76,16 @@
       color: transparentize(white, .3);
     }
   }
+}
+
+
+.view-this-story{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  width: 50%;
+  height: 50%;
+  margin: auto;
 }

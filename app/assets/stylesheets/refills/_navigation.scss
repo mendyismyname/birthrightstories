@@ -1,197 +1,282 @@
 
-// Have to expose var bc of buffer that is needed
-$centered-navigation-height-large: 300px;
+$nav-base-color: white;
+$nav-background: $taglit-blue;
+$nav-color: transparentize($nav-base-color, 0.05);
+$nav-color-hover: $nav-base-color;
+$nav-background: $taglit-blue;
+$nav-border-bottom-width: 3px;
+$nav-side-section-width: 30%;
+$nav-side-section-width-small: 20%;
 
-header.centered-navigation {
+$nav-height-minimized: 60px;
+$nav-height-expanded: 300px;
 
-  // $centered-navigation-padding: 1em;
-  $centered-navigation-base-color: white;
-  $centered-navigation-background: $taglit-blue;
-  $centered-navigation-color: transparentize($centered-navigation-base-color, 0.3);
-  $centered-navigation-color-hover: $centered-navigation-base-color;
-  $centered-navigation-height: 60px;
-  $centered-navigation-background: $taglit-blue;
-  $centered-navigation-border-bottom-width: 3px;
-  $centered-navigation-side-section-width: 20%;
-
-
-  background-color: $centered-navigation-background;
-  border-bottom: $centered-navigation-border-bottom-width solid transparentize(white, 0.2);
+%nav-bg{
+  background-color: $nav-background;
+  border-bottom: $nav-border-bottom-width solid transparentize(white, 0.2);
   font-family: $header-font-family;
-  font-weight: bold;
-  color: $centered-navigation-color;
-  height: $centered-navigation-height-large;
+  // font-weight: bold;
+  color: $nav-color;
+}
+%nav-styling{
+  @include transition (height 0.3s ease-in-out);
+
+  .nav-container,
+  .nav-panel-wrapper {
+    max-height: 100%;
+    @include transition (all 0.3s ease-in-out);
+  }
+  .nav-follow-up a{
+    @extend button;
+  }
+}
+
+%nav-layout{
+  height: $nav-height-expanded;
   width: 100%;
   z-index: 9999;
   position: fixed;
-  @include transition (height 0.3s ease-in-out);
 
-  &.smaller{
-    height: $centered-navigation-height;
-
-    ul.centered-navigation-panel{
-      width: auto;
-      padding: 0;
-
-      .nav-story-count{
-        font-size: 1.6em;
-        font-weight: 300;
-      }
-
-      @include media(em(550)) {
-        li.nav-story-count, li.nav-headline, li.nav-learn-more{
-          display: none;
-        } 
-      }
-      @include media(em(1060)) {
-        li {
-          display: inline-block !important;
-        }
-      }
-    }
-    .centered-navigation-wrapper{
-      // max-width: em(1280);
-      max-width: 100%;
-      margin: 0;
-    }
-    .centered-navigation-menu a{
-      line-height: $centered-navigation-height;
-    }    
-
-    ul.centered-navigation-submenu{
-      top: 1.5em;
-      right: 3em;
-    }
-    .centered-navigation-buffer{
-      height: $centered-navigation-height;
-    }
-  }
-
-  .centered-navigation-wrapper{
+  .nav-container{
     @include outer-container;
-    @include clearfix;
+    @include clearfix;    
+    width: 100%;
+    max-width: 80em;
     position: relative;
-    z-index: 999;
-    text-align: center;    
+    margin: auto;
     height: 100%;
-    @include transition (all 0.3s ease-in-out);
-    // @include transition-delay(4.5s);
   }
+  .nav-wrapper{
 
-  .centered-navigation-logo{
-    display: inline-block;    
-    float: left;
+  }
+  .nav-wrapper,
+  .nav-logo-wrapper,
+  .nav-panel,
+  .nav-locale-menu-wrapper{
+    width: 100%;
+    height: 100%;  
+
+  }
+ .nav-panel{}
+  .nav-logo{
+    @include position(absolute, 0 auto 0 0);
+  }
+  .nav-locale-menu{
+    @include position(absolute, 0 0 0 auto);
+  }
+  .nav-logo-wrapper,
+  .nav-locale-menu-wrapper{
+    position: relative;
+  }
+  .nav-logo-wrapper{
     text-align: left;
-    height: 100%;
-    width: $centered-navigation-side-section-width;
-    // max-width: 25%;
-    // line-height: $centered-navigation-height;
-    // padding-left: $centered-navigation-padding;
-
-    img{
-      vertical-align: middle;
-      max-height: 100%;
-      opacity: .9;
-      padding: 0;
-      @include transition (all 0.3s ease-in-out);
-    }
   }
-
-  // Main panel
-  ul.centered-navigation-panel{
-    -webkit-transform-style: preserve-3d; // stop webkit flicker
-    clear: both;
-    display: inline-block;
-    margin: 0 auto;
-    padding: 0;
-    z-index: 99999;
-    height: 100%;
-    width: 280px;
-    color: white;
-    padding: 3em 0;
-    @include transition (all 0.3s ease-in-out);
-    
-
-    li{
-      display: none;
-      z-index: 9999;
-      line-height: $centered-navigation-height;
-
-      &.nav-story-count{
-        font-size: 4.6em;
-      } 
-      &.nav-follow-up a{
-        @extend button;
-      }
-
-      @include media(em(550)) {
-        line-height: 1.3;
-        display: block;
-
-        &.nav-follow-up{
-          display: block;
-        }
-        &.nav-story-count, &.nav-headline, &.nav-learn-more{
-          display: block;
-        }        
-      }
-      @include media(em(1060)) {
-        &.nav-headline{
-          font-size: 1.65em;
-          font-weight: 900;
-        }
-        &.nav-follow-up{
-          button {
-            width: 100%;
-            margin: 0.2em 0;
-          }
-        }
-        &.nav-learn-more{
-          font-weight: 900;
-        }
-      }
-
-    }
-  }
-
-  // Localization menu
-  .centered-navigation-menu{
-    display: inline-block;
-    float: right;
+  .nav-locale-menu-wrapper{
     text-align: right;
-    height: 100%;
-    width: $centered-navigation-side-section-width;
-    @include transition (all 0.01s $ease-out-quart);
-
-    a{
-      line-height: $centered-navigation-height-large;
+    .nav-locale-menu-link{
+      @include vertical-align;
     }
     span.taglit{
-      text-transform: uppercase;
-      font-size: 1.3em;
+      line-height: $nav-height-minimized;
       vertical-align: top;
     }
-    img{
-      max-height: 100%;
-      line-height: 0;
+  }  
+  .nav-logo{}
+  .nav-panel-wrapper{
+    @include vertical-align;
+    text-align: center;
+  }
+
+}
+
+%nav-resizing{
+
+  .nav-panel{
+    .nav-story-count,
+    .nav-headline,
+    .nav-follow-up,
+    .nav-learn-more {
+      min-width: 100%;
+      // width: 100%;
+      opacity: 0;
+
+      @include media(em(960)) {
+        opacity: 1;
+      }
     }
+  }
+
+  &.smaller{
+    height: $nav-height-minimized;
+
+    .nav-container{
+      max-width: 100%;
+    }
+    .nav-locale-menu-link img{
+      height: $nav-height-minimized / 2;
+      padding: 5px 0;
+    }
+
+    .nav-panel{
+      // .nav-panel-wrapper{
+      //   max-height: $nav-height-minimized;
+      // }
+      .nav-story-count,
+      .nav-headline,
+      .nav-follow-up,
+      .nav-learn-more {
+        opacity: 0;
+        display: inline-block;
+
+        @include media(em(960)) {
+          opacity: 1;
+          // min-width: 100%;
+          min-width: 0;
+        }
+      }
+    }
+
+
+  }
+}
+
+%nav-drawer{
+  .nav-drawer{
+    max-height: 0;
+    height: 0;
+    overflow-y: hidden;
+    width: 100%;
+    position: fixed;
+
+    @extend %nav-bg;
+    @include transition (all 0.3s $ease-out-quart);
+
+    &.opened{
+      max-height: 400px;
+      height: 400px;      
+    }
+
+    .nav-drawer-wrapper{
+      @include outer-container;
+      @include clearfix;
+      position: relative;
+      z-index: 999;      
+      max-width: 45em;
+      padding: 5em 0;
+
+      h1{
+        font-weight: 700;
+      }
+      h3 {
+        font-weight: 700;
+        padding-top: 0.3em;
+        padding-bottom: 0.6em;
+      }
+      p{
+        // padding: 0.2em 0;
+      }
+    }
+  }
+  .nav-drawer-wrapper{}
+  .nav-drawer-wrapper-close{}
+}
+
+header.nav{
+
+  @extend %nav-bg;
+  @extend %nav-layout;
+  @extend %nav-styling;
+  @extend %nav-resizing;
+  @extend %nav-drawer;
+
+  .nav-wrapper{
+ 
+  }
+
+
+  .nav-logo-wrapper{
+
+  }
+  .nav-locale-menu-wrapper{
+
+  }  
+  .nav-logo{
+    img {
+      max-height: 100%;
+      opacity: .9;
+      @include transition (all 0.3s ease-in-out);
+      padding: 1em;
+    }
+  }
+  .nav-panel-wrapper{
+
+  }
+  .nav-panel{
+
+
+    .nav-story-count{}
+    .nav-headline{}
+    .nav-follow-up{}
+    .nav-learn-more{}
+  }
+  .nav-locale-menu{
+  }
+  .nav-locale-menu-link{
+
+  }
+
+
+
+  // Localization menu
+  .nav-locale-menu{
+    // display: inline-block;
+    // float: right;
+    // text-align: right;
+    // height: 100%;
+    // width: $nav-side-section-width;
+    // max-width: $nav-side-section-width;
+    @include transition (all 0.01s $ease-out-quart);
+
+    // a{
+    //   line-height: $nav-height-expanded;
+    // }
+    // span.taglit{
+    //   text-transform: uppercase;
+    //   font-size: 1.3em;
+    //   vertical-align: top;
+    // }
+    // img{
+    //   max-height: 100%;
+    //   line-height: 0;
+    // }
+    
+
+
     // Mechanics for showing the dropdown
-    &:hover > .centered-navigation-submenu {
+    .nav-locale-menu-link:hover > .nav-locale-menu-submenu {
       display: block;
     }
   }
     // Localization submenu
-  ul.centered-navigation-submenu{
+  ul.nav-locale-menu-submenu{
+
     display: none;
-    background-color: $centered-navigation-background;
+    // display: block;
+
+    width: 12em;
+
+    background-color: $nav-background;
     border-radius: $base-border-radius;
     padding: 35px;
-    position: relative;
-    top: -5em;
-    right: -2.5em;
+    // position: relative;
+    position: absolute;
+    // top: -5em;
+    // right: -2.5em;
+    // top: -0.1em;
+    right: 0;
 
     a{
-      line-height: $centered-navigation-height / 2;
+      // line-height: $nav-height-expanded / 2;
     }     
     li {
       @include clearfix;
@@ -209,38 +294,9 @@ header.centered-navigation {
     }    
   }  
 
-  // Drawer 
-  .centered-navigation-drawer{
-    &.opened{
-      max-height: 300px;
-      height: 300px
-    }
-    max-height: 0;
-    height: 0;
-    overflow-y: hidden;
-    width: 100%;
-
-    background-color: $centered-navigation-background;
-    border-bottom: $centered-navigation-border-bottom-width solid transparentize(white, 0.2);
- 
-    @include transition (all 0.3s $ease-out-quart);
-
-    .centered-navigation-drawer-wrapper{
-      @include outer-container;
-      @include clearfix;
-      position: relative;
-      z-index: 999;
-      text-align: left;    
-      height: 100%;
-      max-width: 45em;
-    }
-
-  }
-
 }
-
-// This cancels out the fixed position header from displacing images at first
-.centered-navigation-buffer{
-  height: $centered-navigation-height-large;
+.nav-buffer{
+  height: $nav-height-expanded;
   display: block;
+  @extend %nav-bg;
 }
