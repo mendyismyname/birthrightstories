@@ -31,7 +31,7 @@ class Hashtag < ActiveRecord::Base
   after_create :scrape_instagram
 
   def persist_refresh(options)
-    update_attributes options.slice(:min_tag_id, :max_tag_id).compact.merge(refreshed_at: Datetime.now)
+    update_attributes options.slice(:min_tag_id, :max_tag_id).compact.merge(refreshed_at: Time.now)
   end
 
   def scrape_instagram

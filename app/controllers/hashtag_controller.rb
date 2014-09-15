@@ -1,5 +1,7 @@
 class HashtagController < ApplicationController
 
+  respond_to :json, :html, :xml
+
   expose(:hashtag)
   expose(:current_page)        { params[:page] }
   expose(:instagram_medias)    { hashtag.instagram_medias.displayable.randomized.page(current_page).per(48) }
@@ -9,6 +11,7 @@ class HashtagController < ApplicationController
   expose(:other_available_locales) { I18n.available_locales.find_all {|l| l != I18n.locale } }
 
   def show
+    respond_with instagram_medias
   end 
 
 end

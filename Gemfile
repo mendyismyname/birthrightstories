@@ -7,6 +7,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.5'
 gem 'mysql2'
 gem 'react-rails', '~> 0.5.1'
+gem "therubyracer", platforms: :ruby
 
 # Webserver
 group :staging, :production do
@@ -44,7 +45,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'whenever', :require => false
+gem 'whenever', require: false
 
 # Pagination
 gem 'kaminari'

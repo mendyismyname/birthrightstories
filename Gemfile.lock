@@ -197,6 +197,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    libv8 (3.16.14.7)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -298,6 +299,7 @@ GEM
       rails (>= 3.1)
       react-source (= 0.5.2)
     react-source (0.5.2)
+    ref (1.0.5)
     refills (0.0.2)
     responders (1.0.0)
       railties (>= 3.2, < 5)
@@ -322,6 +324,9 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     terminal-notifier-guard (1.5.3)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -400,6 +405,7 @@ DEPENDENCIES
   spring
   sprockets (= 2.11.0)
   terminal-notifier-guard
+  therubyracer
   thin
   uglifier
   unicorn (= 4.8.3)
