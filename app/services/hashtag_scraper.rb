@@ -19,6 +19,7 @@ module HashtagScraper
       options = Hash[next_url.split('?').last.split('&').map {|x| x.split('=')}]
                   .symbolize_keys
       tag.persist_refresh options
+      sleep 1
     end
   end
 

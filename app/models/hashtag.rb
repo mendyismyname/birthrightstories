@@ -28,7 +28,7 @@ class Hashtag < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  after_create :scrape_instagram
+  # after_create :scrape_instagram
 
   def persist_refresh(options)
     update_attributes options.slice(:min_tag_id, :max_tag_id).compact.merge(refreshed_at: Time.now)
