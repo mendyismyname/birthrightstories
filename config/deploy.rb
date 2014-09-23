@@ -73,11 +73,12 @@ namespace :install do
   end
   task :server_config do
     on roles(:app) do
-      upload! 'deploy/digital_ocean/nginx_site_enabled.conf', '/etc/nginx/sites-enabled/default'
-      upload! 'deploy/digital_ocean/nginx.conf', '/etc/nginx/nginx.conf'
-      upload! 'deploy/digital_ocean/unicorn.rb', '/home/unicorn/unicorn.conf'
-      upload! 'deploy/digital_ocean/unicorn_paths.sh', '/etc/default/unicorn'
-      upload! 'deploy/digital_ocean/unicorn_init.sh', '/etc/init.d/unicorn'
+      upload! 'config/digital_ocean/my.cnf', '/root/my.cnf'
+      # upload! 'config/digital_ocean/nginx_site_enabled.conf', '/etc/nginx/sites-enabled/default'
+      upload! 'config/digital_ocean/nginx.conf', '/etc/nginx/nginx.conf'
+      upload! 'config/digital_ocean/unicorn.rb', '/home/unicorn/unicorn.conf'
+      upload! 'config/digital_ocean/unicorn_init.sh', '/etc/init.d/unicorn'
+      upload! 'config/digital_ocean/unicorn_paths.sh', '/etc/default/unicorn'
     end
   end
   task :rails_config do
@@ -104,7 +105,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       invoke 'install:rails_config'
-      invoke 'delayed_job:restart' 
+      # invoke 'delayed_job:restart' 
       invoke 'unicorn:stop'
       invoke 'unicorn:start'
     end

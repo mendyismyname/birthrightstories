@@ -19,10 +19,13 @@ if [ -f /etc/default/unicorn ]; then
   . /etc/default/unicorn
 fi
 
-export GEM_HOME=/usr/local/rvm/gems/ruby-2.1.2
-export GEM_PATH=/usr/local/rvm/gems/ruby-2.1.2:/usr/local/rvm/gems/ruby-2.1.2/gems:/usr/local/rvm/gems/ruby-2.1.2@global/gems
+export GEM_HOME=/usr/local/rvm/gems/ruby-2.0.0-p353
+export GEM_PATH=/usr/local/rvm/gems/ruby-2.0.0-p353:/usr/local/rvm/gems/ruby-2.0.0-p353/gems:/usr/local/rvm/gems/ruby-2.0.0-p353@global/gems
+DAEMON=/usr/local/rvm/gems/ruby-2.0.0-p353/bin/unicorn
 
-DAEMON=/usr/local/rvm/gems/ruby-2.1.2/bin/unicorn
+# export GEM_HOME=/usr/local/rvm/gems/ruby-2.1.2
+# export GEM_PATH=/usr/local/rvm/gems/ruby-2.1.2:/usr/local/rvm/gems/ruby-2.1.2/gems:/usr/local/rvm/gems/ruby-2.1.2@global/gems
+# DAEMON=/usr/local/rvm/gems/ruby-2.1.2/bin/unicorn
 
 PID=${PID-/run/unicorn.pid}
 
