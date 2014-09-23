@@ -74,8 +74,9 @@ namespace :install do
   task :server_config do
     on roles(:app) do
       upload! 'config/digital_ocean/my.cnf', '/root/my.cnf'
-      # upload! 'config/digital_ocean/nginx_site_enabled.conf', '/etc/nginx/sites-enabled/default'
-      upload! 'config/digital_ocean/nginx.conf', '/etc/nginx/nginx.conf'
+      upload! 'config/digital_ocean/nginx_birthrightstories.conf', '/etc/nginx/sites-enabled/birthrightstories'
+      upload! 'config/digital_ocean/nginx.conf', '/etc/nginx/sites-enabled/birthrightstories'
+      # upload! 'config/digital_ocean/nginx.conf', '/etc/nginx/nginx.conf'
       upload! 'config/digital_ocean/unicorn.rb', '/home/unicorn/unicorn.conf'
       upload! 'config/digital_ocean/unicorn_init.sh', '/etc/init.d/unicorn'
       upload! 'config/digital_ocean/unicorn_paths.sh', '/etc/default/unicorn'
