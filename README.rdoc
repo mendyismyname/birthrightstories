@@ -2,6 +2,11 @@
 
 need to run these
 
+
+
+
+
+
 ```sql
 ALTER DATABASE instagram_users CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 ALTER DATABASE instagram_media CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -40,6 +45,7 @@ innodb_large_prefix
 
 http://blog.pagerduty.com/2012/10/trading-up-your-engine-how-to-move-your-iops-heavy-mysqlrails-stack-to-unicode-without-downtime/
 /etc/my.cnf
+~/my.cnf
 
 ``` 
 [client]
