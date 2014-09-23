@@ -41,8 +41,9 @@
       %p= t('learn_more_dropdown.summary_one')
       %p= t('learn_more_dropdown.summary_two')
 
-      .nav-drawer-wrapper-close
-        = link_to '#', onclick: "$('#header-learn').removeClass('opened'); return false;" do
-          = t('learn_more_dropdown.close')
+    .nav-drawer-wrapper-close
+      = link_to '#', onclick: "$('#header-learn').removeClass('opened'); return false;" do
+        -# = t('learn_more_dropdown.close')
+        X
 
 .nav-buffer

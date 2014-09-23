@@ -156,7 +156,8 @@ $ ->
 
 
 
-
+  $(window).resize ->
+    $('.nav-drawer').removeClass 'opened'
 
 
 
