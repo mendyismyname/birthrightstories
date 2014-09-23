@@ -21,6 +21,7 @@ end
 gem 'possibly', '~> 0.1.1' # Maybe monad
 gem 'friendly_id'
 gem 'decent_exposure'
+gem 'randumb' # Random activerecord improvements
 
 # Localization
 gem 'http_accept_language'

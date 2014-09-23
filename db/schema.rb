@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923103056) do
+ActiveRecord::Schema.define(version: 20140923184924) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -121,7 +121,9 @@ ActiveRecord::Schema.define(version: 20140923103056) do
     t.datetime "updated_at"
   end
 
+  add_index "instagram_media_hashtags", ["hashtag_id", "instagram_media_id"], name: "index_imh_on_hashtag_id_and_instagram_media_id", using: :btree
   add_index "instagram_media_hashtags", ["hashtag_id"], name: "index_instagram_media_hashtags_on_hashtag_id", using: :btree
+  add_index "instagram_media_hashtags", ["instagram_media_id"], name: "index_instagram_media_hashtags_on_instagram_media_id", using: :btree
 
   create_table "instagram_users", force: true do |t|
     t.integer  "instagram_id"
