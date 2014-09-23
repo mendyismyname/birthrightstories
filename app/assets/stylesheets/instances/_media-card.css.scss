@@ -88,27 +88,27 @@
 
 %media-card-layout {
     $grid-item-smallest-columns: (12 24 1 0px vertical);
-    $grid-item-small-columns:    (4 6 3 0px vertical);
+    $grid-item-small-columns:    (6 12 2 0px vertical);
     $grid-item-medium-columns:   (3 1.5 4 0px horizontal);
     $grid-item-large-columns:    (2 1 5 0px horizontal);
     $grid-item-larger-columns:   (1 0.5 6 6px horizontal);
 
     @include grid-item-columns($grid-item-smallest-columns);
 
-    @include media($small-screen) {
+    @include media($small-screen-within) {
         @include grid-item-columns($grid-item-small-columns);
     }
-    @include media($medium-screen) {
+    @include media($medium-screen-within) {
         @include grid-item-columns($grid-item-medium-columns);
     }
-    @include media($large-screen) {
+    @include media($large-screen-within) {
         @include grid-item-columns($grid-item-large-columns);
         .media-card-tile-overlay {
             font-size: 0.7em;
         }
 
     }
-    @include media($larger-screen) {
+    @include media($larger-screen-within) {
         @include grid-item-columns($grid-item-larger-columns);
         .media-card-tile-overlay {
             font-size: 0.5em;
