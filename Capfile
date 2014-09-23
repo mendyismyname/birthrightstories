@@ -24,6 +24,8 @@ require 'capistrano/rails/migrations'
 # Custom
 require "whenever/capistrano"
 require 'capistrano/rails/collection'
+require 'capistrano/rails/collection'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
