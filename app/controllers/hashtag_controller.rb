@@ -2,7 +2,7 @@ class HashtagController < ApplicationController
 
   respond_to :json, :html, :xml
 
-  expose(:hashtag)
+  expose(:hashtag)             { Hashtag.find(1) }
   expose(:current_page)        { params[:page] }
   expose(:instagram_medias)    { hashtag.instagram_medias.displayable.randomized.page(current_page).per(60) }
   expose(:current_story_count) { '400,000' }
