@@ -54,7 +54,6 @@ class InstagramMedia < ActiveRecord::Base
   scope :only_videos, -> { where(media_type: 'video') }
   scope :only_images, -> { where(media_type: 'image') }
 
-
   before_save :serialize_attrs
   # before_save :sanitize_emoticons
 
