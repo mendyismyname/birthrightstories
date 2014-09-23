@@ -195,9 +195,9 @@ $ ->
   retrieveMore = -> container.infinitescroll 'retrieve'
 
   container.infinitescroll infinitescrollOptions, applyImageOpacity
-  setTimeout retrieveMore, 1
-  setTimeout retrieveMore, 250
-  setTimeout retrieveMore, 500
+  # setTimeout retrieveMore, 100
+  # setTimeout retrieveMore, 250
+  # setTimeout retrieveMore, 500
   # setTimeout retrieveMore, 750
 
 
