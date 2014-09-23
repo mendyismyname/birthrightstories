@@ -75,7 +75,12 @@ $ ->
     $('.media-card').each (index, elem) ->
       # console.log 'HIDING', toHide.length
       shouldHide = $.isElementOutsideViewport(elem, 1000)
-      $(elem).toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
+      visibleTile = $(elem).toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
+
+      # if !shouldHide
+      #   visibleTile.css('background-image', 'url("' + visibleTile.data().uri + '")')
+      # else
+      #   visibleTile.css('background-image', 'none')
 
     # toHide = []
     # toReveal = []
