@@ -80,6 +80,8 @@ namespace :install do
       upload! 'config/digital_ocean/unicorn.rb', '/home/unicorn/unicorn.conf'
       upload! 'config/digital_ocean/unicorn_init.sh', '/etc/init.d/unicorn'
       upload! 'config/digital_ocean/unicorn_paths.sh', '/etc/default/unicorn'
+
+      invoke 'deploy:restart'
     end
   end
   task :rails_config do
