@@ -10,7 +10,8 @@
 
   %body{class: "locale-#{locale}"}
 
-    = render 'layouts/header'
+    = cache ['header', locale ] do
+      = render 'layouts/header'
 
     = yield
 
