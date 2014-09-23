@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909205654) do
+ActiveRecord::Schema.define(version: 20140923103056) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -110,6 +110,9 @@ ActiveRecord::Schema.define(version: 20140909205654) do
     t.string   "media_type"
     t.boolean  "is_displayable",    default: false
   end
+
+  add_index "instagram_media", ["instagram_user_id"], name: "index_instagram_media_on_instagram_user_id", using: :btree
+  add_index "instagram_media", ["is_displayable"], name: "index_instagram_media_on_is_displayable", using: :btree
 
   create_table "instagram_media_hashtags", force: true do |t|
     t.integer  "instagram_media_id"

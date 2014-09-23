@@ -20,6 +20,11 @@
 #  media_type        :string(255)
 #  is_displayable    :boolean          default(FALSE)
 #
+# Indexes
+#
+#  index_instagram_media_on_instagram_user_id  (instagram_user_id)
+#  index_instagram_media_on_is_displayable     (is_displayable)
+#
 
 require 'test_helper'
 

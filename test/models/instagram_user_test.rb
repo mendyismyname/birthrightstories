@@ -5,7 +5,7 @@
 #  id                :integer          not null, primary key
 #  instagram_id      :integer
 #  username          :string(255)
-#  full_name         :string(255)
+#  full_name         :text
 #  bio               :text
 #  profile_picture   :string(255)
 #  website           :string(255)
