@@ -15,19 +15,24 @@
   //   padding-top: 100%;
   // }
 
-  &.grid-item-expanded{
-    width:       $expanded-width;
-    // padding-top: $expanded-width;
-    // padding-top: $expanded-width;
+
+  .morph-content{
+    width: $width;
+  }
+
+  // &.grid-item-expanded{
+  //   width:       $expanded-width;
+  //   // padding-top: $expanded-width;
+  //   // padding-top: $expanded-width;
   
 
-    .hover-tile-container {
-      &:after{
-        @include maintain-aspect-ratio(3 2);
-      }
-    }
+  //   .hover-tile-container {
+  //     &:after{
+  //       @include maintain-aspect-ratio(3 2);
+  //     }
+  //   }
 
-  }
+  // }
 }
 
 .grid-items {

@@ -34,7 +34,7 @@ $nav-height-expanded: 300px;
 %nav-layout{
   height: $nav-height-expanded;
   width: 100%;
-  z-index: 9999;
+  z-index: 999;
   position: fixed;
 
   .nav-container{

@@ -46,6 +46,9 @@ class InstagramMedia < ActiveRecord::Base
 
   scope :randomized,  -> { order('RAND()') }
   scope :displayable, -> { where(is_displayable: true) }
+  scope :only_videos, -> { where(media_type: 'video') }
+  scope :only_images, -> { where(media_type: 'image') }
+
 
   before_save :serialize_attrs
   # before_save :sanitize_emoticons
@@ -76,6 +79,9 @@ class InstagramMedia < ActiveRecord::Base
       define_method "#{image_type}_image_#{image_attribute}" do
         images[image_type][image_attribute]
       end
+      define_method "#{image_type}_video_#{image_attribute}" do
+        videos[image_type][image_attribute]
+      end      
     end
   end
 
@@ -102,5 +108,10 @@ class InstagramMedia < ActiveRecord::Base
     #   (COMMENTS_MULTIPLIER * comments_count) +
     #   (USERS_IN_PHOTO_MULTIPLIER * users_in_photo_count)
   end
+
+  def is_video?
+    media_type == 'video'
+  end
+
 
 end

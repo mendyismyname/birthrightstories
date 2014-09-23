@@ -1,26 +1,98 @@
--# .media-card{ data: instagram_media.to_data }
+-# -# .media-card{ data: instagram_media.to_data }
+-# .media-card
+-#   .media-card-container
+-#     .media-card-tile.media-card-tile-visible{ style: "background-image: url(#{instagram_media.thumbnail_image_url});"}
+-#     .media-card-tile.media-card-tile-hidden
+-#       .media-card-tile-overlay
+-#         %h5
+-#           = t('hover_state.view_this')
+-#           %br
+-#           = t('hover_state.story')   
+
+-#     .media-card-tile.media-card-tile-expanded
+-#       .media-card-tile-container
+-#         .media-card-tile-image
+-#           = image_tag 'loader.gif', data: {uri: instagram_media.standard_resolution_image_url}
+-#         .media-card-tile-info
+-#           .media-card-author
+-#             = link_to instagram_media.instagram_user.uri do
+-#               = image_tag instagram_media.instagram_user.profile_picture
+-#               %p= instagram_media.instagram_user.username_tag
+-#           .media-card-caption
+-#             = instagram_media.caption_text
+
+-#           .media-card-social
+-#             -# = button_to 'F Like', '#'
+-#             -# = button_to 'Share', '#'
+
 .media-card
   .media-card-container
-    .media-card-tile.media-card-tile-visible{ style: "background-image: url(#{instagram_media.thumbnail_image_url});"}
-    .media-card-tile.media-card-tile-hidden
-      .media-card-tile-overlay
-        %h5
-          = t('hover_state.view_this')
-          %br
-          = t('hover_state.story')   
+    .morph-button.morph-button-fixed.morph-button-modal.morph-button-modal-3
+      .media-card-tile.media-card-tile-visible{ style: "background-image: url(#{instagram_media.thumbnail_image_url});"}
+      .media-card-tile.media-card-tile-hidden
+        .media-card-tile-overlay
+          %h5
+            = t('hover_state.view_this')
+            %br
+            = t('hover_state.story')     
+                
+      
+      .morph-content
+        .media-card-tile.media-card-tile-expanded
+          .media-card-tile-container
+            %span.icon.icon-close X
 
-    .media-card-tile.media-card-tile-expanded
-      .media-card-tile-container
-        .media-card-tile-image
-          = image_tag 'loader.gif', data: {uri: instagram_media.standard_resolution_image_url}
-        .media-card-tile-info
-          .media-card-author
-            = link_to instagram_media.instagram_user.uri do
-              = image_tag instagram_media.instagram_user.profile_picture
-              %p= instagram_media.instagram_user.username_tag
-          .media-card-caption
-            = instagram_media.caption_text
+            .media-card-tile-image
+              - if instagram_media.is_video?
+                = video_tag 'loader.gif', controls: false, autobuffer: false, autoplay: true, data: {uri: instagram_media.standard_resolution_video_url}
+                -# = video_tag instagram_media.standard_resolution_video_url, controls: true
+              - else
+                = image_tag 'loader.gif', data: {uri: instagram_media.standard_resolution_image_url}
+            .media-card-tile-info
+              .media-card-author
+                = link_to instagram_media.instagram_user.uri do
+                  = image_tag 'loader.gif', data: {uri: instagram_media.instagram_user.profile_picture}
+                  %p= instagram_media.instagram_user.username_tag
+              .media-card-caption
+                = instagram_media.caption_text
 
-          .media-card-social
-            -# = button_to 'F Like', '#'
-            -# = button_to 'Share', '#'
+              .media-card-social
+                -# = button_to 'F Like', '#'
+                -# = button_to 'Share', '#'
+      -# %div
+      -#   .content-style-form.content-style-form-2
+      -#     %span.icon.icon-close Close the dialog
+      -#     %h2 Sign Up
+      -#     %form
+      -#       %p
+      -#         %label Email
+      -#         %input{type: "text"}/
+      -#       %p
+      -#         %label Password
+      -#         %input{type: "password"}/
+      -#       %p
+      -#         %label Repeat Password
+      -#         %input{type: "password"}/
+      -#       %p
+      -#         %button Sign Up            
+
+
+-# .morph-button.morph-button-modal.morph-button-modal-3.morph-button-fixed
+-#   %button{type: "button"} Signup
+-#   .morph-content
+-#     %div
+-#       .content-style-form.content-style-form-2
+-#         %span.icon.icon-close Close the dialog
+-#         %h2 Sign Up
+-#         %form
+-#           %p
+-#             %label Email
+-#             %input{type: "text"}/
+-#           %p
+-#             %label Password
+-#             %input{type: "password"}/
+-#           %p
+-#             %label Repeat Password
+-#             %input{type: "password"}/
+-#           %p
+-#             %button Sign Up            

@@ -10,6 +10,57 @@ $ ->
   #   rect.bottom <= (window.innerHeight or document.documentElement.clientHeight) and
   #   rect.right <= (window.innerWidth or document.documentElement.clientWidth) #or $(window).width()
 
+
+
+
+
+
+  # $.isElementOutsideViewport = (el, offsetHide, offsetRemove) ->
+    
+  #   #special bonus for those using jQuery
+  #   el = el[0] if el instanceof jQuery
+  #   rect = el.getBoundingClientRect()
+  #   #or $(window).height() 
+    
+  #   rectTop = rect.top
+  #   rectBottom = rect.bottom
+  #   height = (window.innerHeight or document.documentElement.clientHeight)
+
+  #   hide:   (rectTop < 0 - offsetHide) or (rectBottom > height + offsetHide)
+  #   remove: (rectTop < 0 - offsetRemove) or (rectBottom > height + offsetRemove)
+                  
+
+  # visibilityFn = ->
+  #   $('.media-card').each (index, elem) ->
+  #     ele = $(elem)
+  #     isOutsideBoundaries = $.isElementOutsideViewport(elem, 3000, 6000)
+
+  #     if isOutsideBoundaries.remove
+  #       ele.remove()
+
+  #     if isOutsideBoundaries.hide
+  #       if !ele.hasClass('hidden')
+  #           ele.addClass('hidden')
+  #     else
+  #       if ele.hasClass('hidden')
+  #           ele.removeClass('hidden')  
+
+  #     # $(elem).toggleClass('hidden', $.isElementOutsideViewport(elem, 5000))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $.isElementOutsideViewport = (el, offset) ->
     
     #special bonus for those using jQuery
@@ -20,8 +71,63 @@ $ ->
     rect.bottom > (window.innerHeight or document.documentElement.clientHeight) + offset
 
   visibilityFn = ->
+
     $('.media-card').each (index, elem) ->
-      $(elem).toggleClass('hidden', $.isElementOutsideViewport(elem, 1500))
+      # console.log 'HIDING', toHide.length
+      shouldHide = $.isElementOutsideViewport(elem, 1000)
+      $(elem).toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
+
+    # toHide = []
+    # toReveal = []
+
+    # $('.media-card').each (index, elem) ->
+    #   ele = $(elem)
+    #   if $.isElementOutsideViewport(elem, 500)
+    #     toHide.push(ele)
+    #   else if ele.hasClass('hidden')
+    #     toReveal.push(ele)
+
+    # if toHide.length
+    #   console.log 'HIDING', toHide.length
+    #   debugger
+    #   toHide.each (index, elem) -> 
+
+    #   $(toHide).addClass('hidden').find('.media-card-tile-visible').removeClass('media-card-loaded')
+    # if toReveal.length
+    #   console.log 'REVEALING', toReveal.length
+    #   $(toReveal).removeClass('hidden').find('.media-card-tile-visible').addClass('media-card-loaded')
+
+
+  # moveToCentralCard = (cards)->
+
+  #   inViewports = cards.filter((index, elem) ->
+  #     !$.isElementOutsideViewport(elem, 5000))
+
+  #   console.log cards.length
+  #   console.log inViewports.length
+
+  #   middle = inViewports.first();
+
+  #   $('html,body').animate({
+  #       scrollTop: middle.offset().top
+  #     }, 1000);
+
+
+  removeFn = ->
+    cards = $('.media-card')
+    toRemove = cards.filter((index, elem) ->
+      $.isElementOutsideViewport(elem, 5000))
+    # .slice(-12)
+
+    if toRemove.length
+      window.noScroll()
+      console.log 'REMOVING', toRemove.length
+      # toRemove.removeClass('media-card').find('.media-card-container').empty()
+      toRemove.remove();
+      window.canScroll()
+
+
+      # moveToCentralCard(cards)
 
   scrollFn = ->
     distanceY = window.pageYOffset or document.documentElement.scrollTop
@@ -30,11 +136,18 @@ $ ->
     $('.nav-drawer').removeClass 'opened' if distanceY > shrinkOn
 
 
-  window.addEventListener 'scroll', $.throttle(visibilityFn, 150)
+  scrollHandler = ->
+    # removeFn()
+    visibilityFn()
+    scrollFn()
 
-  window.addEventListener 'scroll', $.throttle(scrollFn, 200)
+  # window.addEventListener 'scroll', $.throttle(visibilityFn, 150)
 
+  # window.addEventListener 'scroll', $.throttle(removeFn, 1000)
 
+  # window.addEventListener 'scroll', $.throttle(scrollFn, 200)
+
+  window.addEventListener 'scroll', $.throttle(scrollHandler, 100)
 
 
 
@@ -51,7 +164,7 @@ $ ->
     itemSelector: '.media-card'      # selector for all items you'll retrieve
     loading:
       finishedMsg: ''
-      # img:         null
+      img:         'javascript:void(0)'
       msg:         null
       msgText:     ''
     # extraScrollPx: 350
@@ -61,7 +174,11 @@ $ ->
     fn = () ->
       $(container).find('.media-card-tile-visible').each (elem) ->
         $(this).imagesLoaded -> 
-          $(this).addClass('media-card-loaded')
+          rand = Math.floor(Math.random() * 17) + 1
+          $(this).addClass('media-card-loaded').addClass('media-card-loaded-' + rand)
+
+      
+      window.addSubMorphs($(container).find('.morph-button').get())
 
       # new Share '.media-card-social', 
       #   networks: 
@@ -132,31 +249,39 @@ $ ->
 
 
 
-  $('body').on 'click', '.media-card', (e) ->
-    e.preventDefault()
-    e.stopPropagation()
+  # $('body').on 'click', '.media-card', (e) ->
+  #   e.preventDefault()
+  #   e.stopPropagation()
 
-    currentCard = $(this)
+  #   currentCard = $(this)
 
-    if currentCard.hasClass('media-card-expanded')
-      currentCard.removeClass('media-card-expanded')
-    else
-      img = currentCard.find('.media-card-tile-image img')
-      # img.attr('src', img.data().uri)
-      img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
+  #   if currentCard.hasClass('media-card-expanded')
+  #     currentCard.removeClass('media-card-expanded')
+  #   else
+  #     img = currentCard.find('.media-card-tile-image img')
+  #     # img.attr('src', img.data().uri)
+  #     img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
 
-      $('.media-card').removeClass('media-card-expanded')
-      currentCard.addClass('media-card-expanded')
+  #     $('.media-card').removeClass('media-card-expanded')
+  #     currentCard.addClass('media-card-expanded')
 
-      shuffleCards(currentCard)
+  #     shuffleCards(currentCard)
 
-      # $.scrollTo(currentCard)
+  #     $.scrollTo(currentCard)
 
 
 
   $('body').on 'mouseenter', '.media-card', (e) -> 
   
-    img = $(this).find('.media-card-tile-image img')
+
+    self = $(this)
+
+    img = self.find('.media-card-tile-image img')
+    if img.length
+      img.attr('src', img.data().uri)
+      img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
+
+    img = self.find('.media-card-author img')
     img.attr('src', img.data().uri)
     img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
 
@@ -174,6 +299,9 @@ $ ->
       # debugger
 
 
+  # $('body').on 'click', '.media-card-tile-image', (e) ->
+  #   e.preventDefault()
+  #   e.stopPropagation()
 
 
   # container.masonry(
