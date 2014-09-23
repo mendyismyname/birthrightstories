@@ -1,3 +1,2 @@
 .media-cards
-  = render partial: 'instagram_medias/instagram_media_card', collection: instagram_medias, as: :instagram_media
-  -# , cache: ->(item) { [item, locale] }
+  = render partial: 'instagram_medias/instagram_media_card', collection: instagram_medias, as: :instagram_media, cache: ->(item) { [item, locale] }
