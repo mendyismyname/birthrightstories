@@ -12,10 +12,10 @@ $medium-screen: 640px;
 $large-screen:  860px;
 $larger-screen: 1280px;
 
-$small-screen-within:  new-breakpoint(min-width $small-screen max-width $medium-screen);
-$medium-screen-within: new-breakpoint(min-width $medium-screen max-width $large-screen);
-$large-screen-within:  new-breakpoint(min-width $large-screen max-width $larger-screen);
-$larger-screen-within: new-breakpoint(min-width $larger-screen);
+$small-screen-within:  min-width $small-screen max-width $medium-screen;
+$medium-screen-within: min-width $medium-screen max-width $large-screen;
+$large-screen-within:  min-width $large-screen max-width $larger-screen;
+$larger-screen-within: min-width $larger-screen;
 
 
 
