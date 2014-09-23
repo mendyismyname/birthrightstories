@@ -29,33 +29,33 @@ pt:
     stories_count: '400comma.png'
 
   header:
-    headline: ''
-    follow_up: ''
-    learn_more: ''
+    headline: 'HISTÓRIAS DO TAGLIT'
+    follow_up: 'QUAL É A SUA?'
+    learn_more: 'Saiba Mais'
     taglit_hash: '#Taglit'
 
   whats_yours_form:
-    first_name: ''
-    last_name: ''
-    email: ''
-    upload_photo: ''
-    choose_file: ''
-    story: ''
-    terms: ''
-    submit: ''
+    first_name: 'PRIMEIRO NOME'
+    last_name: 'SOBRENOME'
+    email: 'EMAIL'
+    upload_photo: 'CARREGAR UMA FOTO (OPCIONAL)'
+    choose_file: 'ESCOLHA O ARQUIVO'
+    story: 'QUAL É A SUA HISTÓRIA DO TAGLIT?'
+    terms: 'EU ACEITO OS TERMOS E CONDIÇÕES'
+    submit: 'ENVIE'
 
     errors:
-      email: ''
-      upload_photo: ''
-      story: ''
-      terms: ''
+      email: 'CONFIRME SEU EMAIL'
+      upload_photo: 'O FORMATO DE FOTO DEVE SER PNG OU JPEG, ATÉ O MÁXIMO DE 3MB'
+      story: 'MÁXIMO DE 100 PALAVRAS'
+      terms: 'NÃO PODEMOS ACEITAR A SUA HISTÓRIA, SE VOCÊ NÃO ACEITAR O TERMO E CONDIÇÕES'
 
   learn_more_dropdown:
-    remember_from_today: ''
-    remember_from_yesterday: ''
-    summary_one: ''
-    summary_two: ''
+    remember_from_today: 'O que você vai lembrar sobre hoje?'
+    remember_from_yesterday: 'Sobre ontem? O ano passado?'
+    summary_one: 'Nós criamos, capturamos e compartilhamos coisas a cada dia que rapidamente entram e saem de nossas mentes e feeds de notícias. Mas há uma diferença entre uma memória fugaz e uma história real.'
+    summary_two: 'Uma história real continua. A verdadeira história é digna de ser compartilhada. Neste verão, comemoramos 400 000 participantes do Taglit - 400 000 momentos e memórias que chamamos de Histórias Taglit. Qual é a Sua?'
 
   hover_state:
-    view_this: ''
-    story: ''
+    view_this: 'VEJA ESTE'
+    story: 'HISTÓRIA'
