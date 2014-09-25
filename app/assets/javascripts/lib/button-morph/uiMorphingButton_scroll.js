@@ -54,6 +54,10 @@
             }
             // don't allow to scroll
             noScroll();
+
+            // Close header
+            $('#header-learn').removeClass('opened');
+
           };
         })(bttn),
         onAfterOpen : function() {

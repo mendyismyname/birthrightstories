@@ -144,7 +144,7 @@ $ ->
     distanceY = window.pageYOffset or document.documentElement.scrollTop
     shrinkOn = 300
     $('header').toggleClass 'smaller', distanceY > shrinkOn
-    $('.nav-drawer').removeClass 'opened' if distanceY > shrinkOn
+    $('#header-learn').removeClass 'opened' if distanceY > shrinkOn
 
 
   scrollHandler = ->
