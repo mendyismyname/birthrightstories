@@ -88,10 +88,11 @@
 
 %media-card-layout {
     $grid-item-smallest-columns: (12 24 1 0px vertical);
+    // $grid-item-smallest-columns: (6 12 2 0px vertical);
     $grid-item-small-columns:    (6 12 2 0px vertical);
-    $grid-item-medium-columns:   (3 1.5 4 0px horizontal);
-    $grid-item-large-columns:    (2 1 5 0px horizontal);
-    $grid-item-larger-columns:   (1 0.5 6 6px horizontal);
+    $grid-item-medium-columns:   (4 2 3 0px horizontal);
+    $grid-item-large-columns:    (3 1.5 4 0px horizontal);
+    $grid-item-larger-columns:   (2 4 4 0px horizontal);
 
     @include grid-item-columns($grid-item-smallest-columns);
 
@@ -100,7 +101,7 @@
     }
     @include media($medium-screen-within) {
         @include grid-item-columns($grid-item-medium-columns);
-    }
+    }    
     @include media($large-screen-within) {
         @include grid-item-columns($grid-item-large-columns);
         .media-card-tile-overlay {
@@ -113,7 +114,7 @@
         .media-card-tile-overlay {
             font-size: 0.5em;
         }
-    }    
+    }  
 }
 
 %media-card-bg-img {

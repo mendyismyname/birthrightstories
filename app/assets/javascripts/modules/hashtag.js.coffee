@@ -174,7 +174,7 @@ $ ->
       msg:         null
       msgText:     ''
     # extraScrollPx: 350
-    bufferPx:      1500
+    bufferPx:      200
 
   applyImageOpacity = (container) ->
     fn = () ->
