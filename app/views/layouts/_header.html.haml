@@ -1,39 +1,41 @@
 %header.nav
   .nav-container
-    .nav-wrapper
 
-      .nav-logo
-        .nav-logo-wrapper
+    / Locale Menu
+    .nav-locale-menu
+      .nav-locale-menu-wrapper
+        .nav-locale-menu-link
           = link_to '#' do
-            = image_tag t('images.logo_large')
+            %span.taglit= t('header.taglit_hash')
+            = image_tag t('images.flag', height: 60)     
 
-      .nav-panel
-        .nav-panel-wrapper
-          .nav-story-count
-            %h1= current_story_count
-          .nav-headline
-            %h5= t('header.headline')
-          .nav-follow-up
-            -# = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
-            = link_to t('header.follow_up'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"      
-          .nav-learn-more
-            = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
+            %ul.nav-locale-menu-submenu
+              - other_available_locales.each do |locale|
+                %li
+                  = link_to url_for(locale: locale) do
+                    .locale
+                      %span.locale-name= t('locale_name', locale: locale)
+                      %span.locale-flag= image_tag t('images.flag', locale: locale), height: 20
+    / Logo Section
+    .nav-logo
+      .nav-logo-wrapper
+        = link_to '#' do
+          = image_tag t('images.logo_large')
 
-      .nav-locale-menu
-        .nav-locale-menu-wrapper
-          .nav-locale-menu-link
-            = link_to '#' do
-              %span.taglit= t('header.taglit_hash')
-              = image_tag t('images.flag', height: 60)     
+    / Info Panel
+    .nav-panel
+      .nav-panel-wrapper
+        .nav-story-count
+          %h1= current_story_count
+        .nav-headline
+          %h5= t('header.headline')
+        .nav-follow-up
+          -# = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
+          = link_to t('header.follow_up'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"      
+        .nav-learn-more
+          = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
 
-              %ul.nav-locale-menu-submenu
-                - other_available_locales.each do |locale|
-                  %li
-                    = link_to url_for(locale: locale) do
-                      .locale
-                        %span.locale-name= t('locale_name', locale: locale)
-                        %span.locale-flag= image_tag t('images.flag', locale: locale), height: 20
-
+  / Drawer
   #header-learn.nav-drawer
     .nav-drawer-wrapper
       %h1= t('learn_more_dropdown.remember_from_today')
@@ -46,4 +48,5 @@
         -# = t('learn_more_dropdown.close')
         X
 
+/ Buffer needed with the fixed nav bar
 .nav-buffer

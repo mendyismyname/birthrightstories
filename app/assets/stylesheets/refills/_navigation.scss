@@ -4,103 +4,177 @@ $nav-background: $taglit-blue;
 $nav-color: transparentize($nav-base-color, 0.05);
 $nav-color-hover: $nav-base-color;
 $nav-background: $taglit-blue;
-$nav-border-bottom-width: 3px;
+$nav-border-width: 3px;
+$nav-border-color: transparentize(white, 0.2);
 $nav-side-section-width: 30%;
 $nav-side-section-width-small: 20%;
 
 $nav-height-minimized: 60px;
 $nav-height-expanded: 300px;
 
+
+
+// BACKGROUND
 %nav-bg{
   background-color: $nav-background;
-  border-bottom: $nav-border-bottom-width solid transparentize(white, 0.2);
+  border-bottom: $nav-border-width solid $nav-border-color;
   font-family: $header-font-family;
-  // font-weight: bold;
   color: $nav-color;
 }
-%nav-styling{
-  @include transition (height 0.3s ease-in-out);
+
+// LAYOUT
+%nav-layout{
+  height: $nav-height-expanded;
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  overflow:hidden;
+
+  // @include clearfix;    
+
+  // RESIZING
+  &.smaller{
+    height: $nav-height-minimized;
+    line-height: $nav-height-minimized;
+
+    .nav-container{
+      max-width: 100%;
+    }
+    .nav-logo{
+      text-align: left;
+      // max-width: 80px;
+    }
+    .nav-logo-wrapper{
+      padding: 0.5em 0;
+    }
+    .nav-panel{
+      width: 100%;
+    }
+  }
+
+  .nav-container{
+    @include outer-container;
+    max-width: em(800);
+    padding-left: 2em;
+    padding-right: 2em;
+
+    // position: relative;
+    // margin: auto;
+  }
+
+  .nav-logo,
+  .nav-panel{
+    text-align: center;
+    height: 100%;
+  }
+
+  .nav-logo,
+  .nav-panel{
+    @include span-columns(12);
+  }
+  @include media(em(920)) {
+    .nav-logo,
+    .nav-panel{
+      @include span-columns(6);
+    }    
+  }  
+
+  .nav-locale-menu{
+    @include position(absolute, 0 0 0 auto);
+  }  
 
   .nav-container,
+  .nav-logo-wrapper,
+  .nav-panel-wrapper,
+  .nav-locale-menu-wrapper{
+    width: 100%;
+    height: 100%;  
+  }
+  .nav-logo-wrapper{
+    padding: 2.3em 0;
+  }
+
+
+  // .nav-logo-wrapper,
+  .nav-logo-wrapper img{
+    height: 100%;
+    width: auto;
+  }
+
+  .nav-panel-wrapper{
+    padding: 17% 0;
+  }
+
+  // .nav-panel{
+  // }
+  // .nav-logo{
+  //   @include position(absolute, 0 auto 0 0);
+  //   padding: 3em 0 3em 3em;
+  //   width: 100%;
+
+  // }
+
+  // .nav-logo-wrapper,
+  // .nav-locale-menu-wrapper{
+  //   position: relative;
+  // }
+  // .nav-logo-wrapper{
+  //   text-align: left;
+  // }
+  // .nav-locale-menu-wrapper{
+  //   text-align: right;
+
+
+  //   .nav-locale-menu-link{
+  //     // @include vertical-align;
+  //     position: relative;
+  //   }
+  //   span.taglit{
+  //     line-height: $nav-height-minimized;
+  //     vertical-align: super;
+  //   }
+  //   padding-right: 10px;
+  //   padding-top: 10px;
+  // }  
+  // .nav-logo{}
+  // .nav-panel-wrapper{
+  //   @include vertical-align;
+  //   text-align: center;
+  //   > div{
+  //     vertical-align: middle;
+  //   }
+  // }
+}
+
+
+
+// STYLING
+%nav-styling{
+  // .nav-container{
+  @include transition (height 0.3s ease-in-out);
+  // }
+
+  .nav-logo,
+  .nav-locale-menu-link,
   .nav-panel-wrapper {
-    max-height: 100%;
     @include transition (all 0.3s ease-in-out);
+
+  }
+
+
+  .nav-container,
+  .nav-panel,
+  .nav-panel-wrapper {
+    // max-height: 100%;
+    // @include transition (all 0.3s ease-in-out);
   }
   .nav-follow-up a{
     @extend button;
   }
 }
 
-%nav-layout{
-  height: $nav-height-expanded;
-  width: 100%;
-  z-index: 999;
-  position: fixed;
 
-  .nav-container{
-    @include outer-container;
-    @include clearfix;    
-    width: 100%;
-    max-width: 80em;
-    position: relative;
-    margin: auto;
-    height: 100%;
-  }
-  .nav-wrapper{
-
-  }
-  .nav-wrapper,
-  .nav-logo-wrapper,
-  .nav-panel,
-  .nav-locale-menu-wrapper{
-    width: 100%;
-    height: 100%;  
-
-  }
-  .nav-panel{
-  }
-  .nav-logo{
-    @include position(absolute, 0 auto 0 0);
-    padding: 3em 0 3em 3em;
-    width: 100%;
-
-  }
-  .nav-locale-menu{
-    @include position(absolute, 0 0 0 auto);
-  }
-  .nav-logo-wrapper,
-  .nav-locale-menu-wrapper{
-    position: relative;
-  }
-  .nav-logo-wrapper{
-    text-align: left;
-  }
-  .nav-locale-menu-wrapper{
-    text-align: right;
-
-
-    .nav-locale-menu-link{
-      // @include vertical-align;
-      position: relative;
-    }
-    span.taglit{
-      line-height: $nav-height-minimized;
-      vertical-align: super;
-    }
-    padding-right: 10px;
-    padding-top: 10px;
-  }  
-  .nav-logo{}
-  .nav-panel-wrapper{
-    @include vertical-align;
-    text-align: center;
-    > div{
-      vertical-align: middle;
-    }
-  }
-
-}
-
+// RESIZING 
 %nav-resizing{
 
   .nav-panel{
@@ -112,11 +186,15 @@ $nav-height-expanded: 300px;
       // width: 100%;
       opacity: 0;
 
-      @include media(em(900)) {
+      @include media(em(920)) {
         opacity: 1;
       }
     }
+
   }
+  .nav-locale-menu-link img{
+    padding: 5px 10px 0 0;
+  }  
 
   &.smaller{
     height: $nav-height-minimized;
@@ -127,7 +205,7 @@ $nav-height-expanded: 300px;
     }
     .nav-locale-menu-link img{
       height: $nav-height-minimized / 2;
-      padding: 5px 0;
+      padding: 5px 10px 0 0;
     }
     .nav-locale-menu-wrapper{
       // padding-right: 0;
@@ -135,18 +213,29 @@ $nav-height-expanded: 300px;
     }
     .nav-logo{
       padding: 0;
+      display: inline-block;
     }
-
+    .nav-panel-wrapper{
+      padding: 0 0;
+    }
     .nav-panel{
+      @include position(absolute, 0 0 0 0);
+      margin: auto;
+      display: inline-block;
+      width: auto;
       // .nav-panel-wrapper{
       //   max-height: $nav-height-minimized;
-      // }
+      .nav-follow-up{
+        vertical-align: initial !important;
+      }
       .nav-story-count,
       .nav-headline,
       .nav-follow-up,
       .nav-learn-more {
         opacity: 0;
         display: inline-block;
+        vertical-align: middle;
+        line-height: $nav-height-minimized;
 
         @include media(em(960)) {
           opacity: 1;
@@ -155,16 +244,10 @@ $nav-height-expanded: 300px;
         }
       }
     }
-
-
   }
 }
 
-
-
-
-
-
+// DRAWER
 %nav-drawer{
   .nav-drawer{
     max-height: 0;
@@ -212,50 +295,15 @@ $nav-height-expanded: 300px;
   }
 }
 
-header.nav{
-
-  @extend %nav-bg;
-  @extend %nav-layout;
-  @extend %nav-styling;
-  @extend %nav-resizing;
-  @extend %nav-drawer;
-
-  .nav-wrapper{
- 
-  }
-
-
-  .nav-logo-wrapper{
-
-  }
-  .nav-locale-menu-wrapper{
-
-  }  
-  .nav-logo{
-    @include transition (all 0.3s ease-in-out);
-    img {
-      max-height: 100%;
-      opacity: .9;
-      padding: 0.5em;
-    }
-  }
-  .nav-panel-wrapper{
-
-  }
-  .nav-panel{
-
-
-    .nav-story-count{}
-    .nav-headline{}
-    .nav-follow-up{}
-    .nav-learn-more{}
-  }
+// LOCALE MENU
+%nav-locale-menu{
   .nav-locale-menu{
   }
   .nav-locale-menu-link{
     .taglit{
       text-transform: uppercase;
       font-weight: 700;
+      font-size: 1.5em;
       padding-right: 1em;
     }
     img{
@@ -263,8 +311,6 @@ header.nav{
       @include transition(all 0.3s ease-in-out)
     }
   }
-
-
 
   // Localization menu
   .nav-locale-menu{
@@ -334,44 +380,23 @@ header.nav{
       opacity: 0.7;
     }    
   }  
-
-}
-.nav-buffer{
-  height: $nav-height-expanded;
-  display: block;
-  // @extend %nav-bg;
-
-  background-color: rgba(0,158,220,0);
-  // @include filter-gradient(#009edc, #009edc, vertical);
-  
-  // @include filter-gradient(#009edc, #009edc, vertical);
-  @include background-image(linear-gradient(top, rgba(0,158,220,1) 0%, rgba(0,158,220,0) 100%));
-  // @include background-image(linear-gradient(top, rgba(0,158,220,0) 0%, rgba(0,158,220,1) 100%));  
 }
 
 
+// ============
+// ACTUAL NAV
+// ============
+header.nav{
+  @extend %nav-bg;
+  @extend %nav-layout;
+  @extend %nav-styling;
+  @extend %nav-drawer;
+  @extend %nav-resizing;
+  @extend %nav-locale-menu
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Locale
+// This code is really bad #REFACTOR
 .locale-en{
   .nav:not(.smaller){
     .nav-story-count h1{
@@ -601,5 +626,18 @@ header.nav{
   }
 }
 
+.nav-buffer{
+  height: $nav-height-expanded;
+  display: block;
+  // @extend %nav-bg;
 
+  // background-color: rgba(0,158,220,0);
+  @include linear-gradient(0deg, transparent, $taglit-blue);
+
+  // @include filter-gradient(#009edc, #009edc, vertical);
+  
+  // @include filter-gradient(#009edc, #009edc, vertical);
+  // @include background-image(linear-gradient(top, rgba(0,158,220,1) 0%, rgba(0,158,220,0) 100%));
+  // @include background-image(linear-gradient(top, rgba(0,158,220,0) 0%, rgba(0,158,220,1) 100%));  
+}
 
