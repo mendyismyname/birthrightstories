@@ -104,16 +104,16 @@
     }    
     @include media($large-screen-within) {
         @include grid-item-columns($grid-item-large-columns);
-        .media-card-tile-overlay {
-            font-size: 0.7em;
-        }
+        // .media-card-tile-overlay {
+        //     font-size: 0.7em;
+        // }
 
     }
     @include media($larger-screen-within) {
         @include grid-item-columns($grid-item-larger-columns);
-        .media-card-tile-overlay {
-            font-size: 0.5em;
-        }
+        // .media-card-tile-overlay {
+        //     font-size: 0.5em;
+        // }
     }  
 }
 
