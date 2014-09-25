@@ -4,6 +4,11 @@
       -# .media-card-tile.media-card-tile-visible{ data: {uri: instagram_media.thumbnail_image_url }}
       .media-card-tile.media-card-tile-visible
         = image_tag instagram_media.thumbnail_image_url
+      
+      - if instagram_media.is_video?
+        .media-card-tile.media-card-tile-video
+          = image_tag 'play_128x128.png'
+
       .media-card-tile.media-card-tile-hidden
         .media-card-tile-overlay
           %h5
