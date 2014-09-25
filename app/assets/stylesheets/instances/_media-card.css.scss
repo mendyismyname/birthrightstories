@@ -317,6 +317,12 @@
     .media-card-tile-hidden {
         @extend %media-card-tile-overlay;
     }
+    .media-card-tile-video img{
+        height: 100%;
+        width: 100%;
+        padding: 3em;
+        opacity: 0.5;
+    }    
     .media-card-tile-expanded {
         @extend %media-card-expanded-layout;
         // @include transition(opacity, 0.7s ease-in-out);
