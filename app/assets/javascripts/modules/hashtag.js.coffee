@@ -73,7 +73,7 @@ $ ->
   visibilityFn = ->
     # console.log 'HIDING'
 
-    $('.media-card').each (index, elem) ->
+    $('.media-card-container').each (index, elem) ->
       shouldHide = $.isElementOutsideViewport(elem, 1000)
       $(elem).toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
 
