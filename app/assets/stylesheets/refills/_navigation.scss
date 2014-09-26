@@ -299,6 +299,7 @@ $nav-height-expanded: 300px;
 // LOCALE MENU
 %nav-locale-menu{
   .nav-locale-menu{
+    line-height: $nav-height-minimized;
   }
   .nav-locale-menu-link{
     .taglit{
@@ -352,6 +353,7 @@ $nav-height-expanded: 300px;
 
     z-index: 9999;
     width: 12em;
+    line-height: $nav-height-minimized / 2;
 
     background-color: rgb(0, 157, 220);
     // background-color: $nav-background;
