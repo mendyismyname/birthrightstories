@@ -71,15 +71,19 @@ $ ->
     rect.bottom > (window.innerHeight or document.documentElement.clientHeight) + offset
 
   visibilityFn = ->
+    # console.log 'HIDING'
 
     $('.media-card').each (index, elem) ->
-      # console.log 'HIDING', toHide.length
       shouldHide = $.isElementOutsideViewport(elem, 1000)
-      ele = $(elem)
-      if ele.hasClass('hidden')
-        ele.removeClass('hidden').find('.media-card-tile-visible').addClass('media-card-loaded') if !shouldHide
-      else
-        ele.addClass('hidden').find('.media-card-tile-visible').removeClass('media-card-loaded') if shouldHide
+      $(elem).toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
+
+
+      # ele = $(elem)
+      # if ele.hasClass('hidden')
+      #   ele.removeClass('hidden').find('.media-card-tile-visible').addClass('media-card-loaded') if !shouldHide
+      # else
+      #   ele.addClass('hidden').find('.media-card-tile-visible').removeClass('media-card-loaded') if shouldHide
+
 
       # visibleTile = .toggleClass('hidden', shouldHide).find('.media-card-tile-visible').toggleClass('media-card-loaded', !shouldHide)
 
@@ -124,18 +128,18 @@ $ ->
   #     }, 1000);
 
 
-  removeFn = ->
-    cards = $('.media-card')
-    toRemove = cards.filter((index, elem) ->
-      $.isElementOutsideViewport(elem, 5000))
-    # .slice(-12)
+  # removeFn = ->
+  #   cards = $('.media-card')
+  #   toRemove = cards.filter((index, elem) ->
+  #     $.isElementOutsideViewport(elem, 5000))
+  #   # .slice(-12)
 
-    if toRemove.length
-      window.noScroll()
-      console.log 'REMOVING', toRemove.length
-      # toRemove.removeClass('media-card').find('.media-card-container').empty()
-      toRemove.remove();
-      window.canScroll()
+  #   if toRemove.length
+  #     window.noScroll()
+  #     console.log 'REMOVING', toRemove.length
+  #     # toRemove.removeClass('media-card').find('.media-card-container').empty()
+  #     toRemove.remove();
+  #     window.canScroll()
 
 
       # moveToCentralCard(cards)
@@ -146,24 +150,30 @@ $ ->
     $('header').toggleClass 'smaller', distanceY > shrinkOn
     $('.nav-drawer').removeClass 'opened' if distanceY > shrinkOn
 
+  # resizeFn = ->
+  #   console.log()
+  #   visibilityFn()
 
   scrollHandler = ->
     # removeFn()
-    visibilityFn()
+    visibilityFnRateLimit()
     scrollFn()
 
-  # window.addEventListener 'scroll', $.throttle(visibilityFn, 150)
-
-  # window.addEventListener 'scroll', $.throttle(removeFn, 1000)
-
-  # window.addEventListener 'scroll', $.throttle(scrollFn, 200)
-
-  window.addEventListener 'scroll', $.throttle(scrollHandler, 100)
-
-
-
-  $(window).resize ->
+  resizeLongFlashFn = ->
+    # console.log('long-resize')
     $('.nav-drawer').removeClass 'opened'
+    # $('.media-card-tile-visible.media-card-loaded').removeClass('media-card-loaded')
+    # visibilityFnRateLimit()
+
+
+
+  resizeLongFlashFnRateLimit = $.throttle(resizeLongFlashFn, 2500)
+  scrollHandlerRateLimit = $.throttle(scrollHandler, 500)
+  visibilityFnRateLimit = $.debounce(visibilityFn, 250)
+
+  $(window).scroll scrollHandlerRateLimit
+  $(window).resize visibilityFnRateLimit
+  $(window).resize resizeLongFlashFnRateLimit
 
 
 
@@ -183,25 +193,18 @@ $ ->
     bufferPx:      200
 
   applyImageOpacity = (container) ->
-    fn = () ->
-      $(container).find('.media-card-tile-visible').each (elem) ->
-        $(this).imagesLoaded -> 
-          rand = Math.floor(Math.random() * 17) + 1
-          $(this).addClass('media-card-loaded').addClass('media-card-loaded-' + rand)
+    $(container).find('.media-card-tile-visible').each (elem) ->
+      $(this).imagesLoaded -> 
+        rand = Math.floor(Math.random() * 17) + 1
+        $(this).addClass('media-card-loaded').addClass('media-card-loaded-' + rand)
 
-      
-      window.addSubMorphs($(container).find('.morph-button').get())
+    
+    window.addSubMorphs($(container).find('.morph-button').get())
 
-      # new Share '.media-card-social', 
-      #   networks: 
-      #     facebook: 
-      #       app_id: 'abc123'
-
-    setTimeout fn, 1
 
   retrieveMore = -> container.infinitescroll 'retrieve'
 
-  container.infinitescroll infinitescrollOptions, $.throttle(applyImageOpacity, 150)
+  container.infinitescroll infinitescrollOptions, $.debounce(applyImageOpacity, 500, true)
   # setTimeout retrieveMore, 100
   # setTimeout retrieveMore, 250
   # setTimeout retrieveMore, 500
@@ -214,39 +217,39 @@ $ ->
   #   console.log 'all images loaded'
 
 
-  gridItemWidth = () -> $('.media-card:not(.media-card-expanded)').first().width()
+  # gridItemWidth = () -> $('.media-card:not(.media-card-expanded)').first().width()
 
-  gridAcrossCount = () ->
-    screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0
-    count = Math.round(screenWidth / gridItemWidth() )
-    count = 12 if count > 12
+  # gridAcrossCount = () ->
+  #   screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0
+  #   count = Math.round(screenWidth / gridItemWidth() )
+  #   count = 12 if count > 12
 
-  shuffleCards = (currentCard) ->
+  # shuffleCards = (currentCard) ->
 
-    before = currentCard.prevAll()
-    after = currentCard.nextAll()
+  #   before = currentCard.prevAll()
+  #   after = currentCard.nextAll()
 
-    acrossCount = gridAcrossCount()
-    beforeCount = before.length
-    afterCount = after.length
+  #   acrossCount = gridAcrossCount()
+  #   beforeCount = before.length
+  #   afterCount = after.length
 
-    amountToMoveBefore = beforeCount % acrossCount
-    amountToMoveAfter = acrossCount - amountToMoveBefore
+  #   amountToMoveBefore = beforeCount % acrossCount
+  #   amountToMoveAfter = acrossCount - amountToMoveBefore
 
-    console.log acrossCount
+  #   console.log acrossCount
 
-    console.log beforeCount, amountToMoveBefore
-    console.log afterCount, amountToMoveAfter
+  #   console.log beforeCount, amountToMoveBefore
+  #   console.log afterCount, amountToMoveAfter
 
 
-    if amountToMoveBefore is 0
-      return
-    else if beforeCount >= amountToMoveBefore
-      before.slice(-1 * amountToMoveBefore).insertAfter currentCard
-    else if afterCount >= amountToMoveAfter
-      after.slice(amountToMoveAfter).insertBefore currentCard
-    else if amountToMoveBefore isnt 0
-      before.insertAfter currentCard
+  #   if amountToMoveBefore is 0
+  #     return
+  #   else if beforeCount >= amountToMoveBefore
+  #     before.slice(-1 * amountToMoveBefore).insertAfter currentCard
+  #   else if afterCount >= amountToMoveAfter
+  #     after.slice(amountToMoveAfter).insertBefore currentCard
+  #   else if amountToMoveBefore isnt 0
+  #     before.insertAfter currentCard
 
 
 
