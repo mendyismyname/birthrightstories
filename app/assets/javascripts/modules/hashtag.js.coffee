@@ -128,18 +128,18 @@ $ ->
   #     }, 1000);
 
 
-  # removeFn = ->
-  #   cards = $('.media-card')
-  #   toRemove = cards.filter((index, elem) ->
-  #     $.isElementOutsideViewport(elem, 5000))
-  #   # .slice(-12)
+  removeFn = ->
+    cards = $('.media-card')
+    toRemove = cards.filter((index, elem) ->
+      $.isElementOutsideViewport(elem, 5000))
+    # .slice(-12)
 
-  #   if toRemove.length
-  #     window.noScroll()
-  #     console.log 'REMOVING', toRemove.length
-  #     # toRemove.removeClass('media-card').find('.media-card-container').empty()
-  #     toRemove.remove();
-  #     window.canScroll()
+    if toRemove.length
+      window.noScroll()
+      console.log 'REMOVING', toRemove.length
+      # toRemove.removeClass('media-card').find('.media-card-container').empty()
+      toRemove.remove();
+      window.canScroll()
 
 
       # moveToCentralCard(cards)
@@ -155,7 +155,7 @@ $ ->
   #   visibilityFn()
 
   scrollHandler = ->
-    # removeFn()
+    removeFnRateLimit()
     visibilityFnRateLimit()
     scrollFn()
 
@@ -167,11 +167,12 @@ $ ->
 
 
 
+  removeFnRateLimit          = $.debounce(removeFn, 500)
   resizeLongFlashFnRateLimit = $.throttle(resizeLongFlashFn, 2500)
   scrollHandlerRateLimit = $.throttle(scrollHandler, 500)
   visibilityFnRateLimit = $.debounce(visibilityFn, 250)
 
-  $(window).scroll scrollHandlerRateLimit
+  # $(window).scroll scrollHandlerRateLimit
   $(window).resize visibilityFnRateLimit
   $(window).resize resizeLongFlashFnRateLimit
 
@@ -180,17 +181,57 @@ $ ->
 
   container = $('#instagram-media-cards .media-cards')
   
-  infinitescrollOptions = 
-    navSelector:  'nav.pagination'             # selector for the paged navigation (it will be hidden)
-    nextSelector: 'nav.pagination a[rel=next]' # selector for the NEXT link (to page 2)
-    itemSelector: '.media-card'      # selector for all items you'll retrieve
-    loading:
-      finishedMsg: ''
-      img:         'javascript:void(0)'
-      msg:         null
-      msgText:     ''
-    # extraScrollPx: 350
-    bufferPx:      300
+  # infinitescrollOptions = 
+  #   navSelector:  'nav.pagination'             # selector for the paged navigation (it will be hidden)
+  #   nextSelector: 'nav.pagination a[rel=next]' # selector for the NEXT link (to page 2)
+  #   itemSelector: '.media-card'      # selector for all items you'll retrieve
+  #   loading:
+  #     finishedMsg: ''
+  #     img:         'javascript:void(0)'
+  #     msg:         null
+  #     msgText:     ''
+  #   # extraScrollPx: 350
+  #   bufferPx:      300
+
+
+
+  startPage = 1;
+  requestData = (page, count) ->
+    $.get '?page=' + (startPage++), (data) ->
+      myScroll.updateCache(page, $(data).find('.media-card'))
+
+  # ajax('dataset.php?start=' + +start + '&count=' + +count, {
+  #   callback: function (data) {
+  #     data = JSON.parse(data);
+  #     myScroll.updateCache(start, data);
+  #   }
+  # });    
+
+
+  updateContent = (el, data) ->
+    el.innerHTML = data.innerHTML;
+
+
+  myScroll = new IScroll '#instagram-media-cards .media-cards', {
+    mouseWheel: true
+    infiniteElements: '#instagram-media-cards .media-card'
+    # nfiniteLimit: 2000,
+    dataset: requestData
+    dataFiller: updateContent
+    cacheSize: 1000
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   applyImageOpacity = (container) ->
 
@@ -205,9 +246,9 @@ $ ->
     window.addSubMorphs($(container).find('.morph-button').get())
 
 
-  retrieveMore = -> container.infinitescroll 'retrieve'
+  # retrieveMore = -> container.infinitescroll 'retrieve'
 
-  container.infinitescroll infinitescrollOptions, applyImageOpacity
+  # container.infinitescroll infinitescrollOptions, applyImageOpacity
   # setTimeout retrieveMore, 100
   # setTimeout retrieveMore, 250
   # setTimeout retrieveMore, 500

@@ -2,8 +2,9 @@
 //= require jquery_ujs
 
 //= require masonry/jquery.imagesloaded.min
-//= require masonry/jquery.infinitescroll.min
-//
+
+//= require lib/iscroll/iscroll-infinite
+
 //= require lib/throttle
 //= require lib/share.min
 

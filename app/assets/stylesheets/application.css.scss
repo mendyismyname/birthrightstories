@@ -33,8 +33,12 @@ $base-body-color: #eee;
 @import "instances/instagram-media";
 
 
+html{
+  -ms-touch-action: none;
+}
 body{
   background: #fff;
+  overflow: hidden; // Needed for infinite scroll to not bounce
 }
 
 .hidden{

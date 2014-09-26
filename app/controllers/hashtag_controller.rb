@@ -1,6 +1,6 @@
 class HashtagController < ApplicationController
 
-  respond_to :json, :html, :xml
+  # respond_to :json, :html, :xml
 
   expose(:hashtag)
   expose(:current_page)          { params[:page] }
@@ -15,7 +15,7 @@ class HashtagController < ApplicationController
   expose(:other_available_locales) { I18n.available_locales.find_all {|l| l != I18n.locale } }
 
   def show
-    respond_with instagram_medias
+    # respond_with instagram_medias
   end 
 
   # private
