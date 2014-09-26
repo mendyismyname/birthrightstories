@@ -70,7 +70,7 @@
 
 			var maskEl = this.el.parentNode.querySelector( '.morph-button-modal' );
 			maskEl.addEventListener( 'click', function(e) { 
-				if( !$(e.target).parents('.media-card-social') ){
+				if( !$(e.target).parents('.media-card-social').length ){
 					self.toggle();
 				}
 			} );
