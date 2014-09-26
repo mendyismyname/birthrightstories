@@ -190,7 +190,7 @@ $ ->
       msg:         null
       msgText:     ''
     # extraScrollPx: 350
-    bufferPx:      200
+    bufferPx:      300
 
   applyImageOpacity = (container) ->
     $(container).find('.media-card-tile-visible').each (elem) ->
