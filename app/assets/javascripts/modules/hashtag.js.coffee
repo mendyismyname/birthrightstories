@@ -283,19 +283,19 @@ $ ->
 
 
 
-  $('body').on 'mouseenter', '.media-card', (e) -> 
+  # $('body').on 'mouseenter', '.media-card', (e) -> 
   
 
-    self = $(this)
+  #   self = $(this)
 
-    img = self.find('.media-card-tile-image img')
-    if img.length
-      img.attr('src', img.data().uri)
-      img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
+  #   img = self.find('.media-card-tile-image img')
+  #   if img.length
+  #     img.attr('src', img.data().uri)
+  #     img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
 
-    img = self.find('.media-card-author img')
-    img.attr('src', img.data().uri)
-    img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
+  #   img = self.find('.media-card-author img')
+  #   img.attr('src', img.data().uri)
+  #   img.imagesLoaded -> $(this).addClass('media-card-tile-image-loaded')
 
 
       # shiftNearby();

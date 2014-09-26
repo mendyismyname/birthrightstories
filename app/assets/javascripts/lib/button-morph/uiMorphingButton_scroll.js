@@ -44,7 +44,26 @@
         onBeforeOpen : (function(btn) {
 
           return function(){
-            var video = $(btn).find('.media-card-tile-image video');
+
+
+            elem = $(btn)
+
+            var img = elem.find('.media-card-tile-image img')
+            if(img.length){
+
+              img.attr('src', img.data().uri)
+              img.imagesLoaded(function() {
+                $(this).addClass('media-card-tile-image-loaded');
+              });
+            }
+
+            img = elem.find('.media-card-author img')
+            img.attr('src', img.data().uri)
+            img.imagesLoaded(function() {
+              $(this).addClass('media-card-tile-image-loaded');
+            });
+
+            var video = elem.find('.media-card-tile-image video');
 
             if(video.length){
               video.attr('src', video.data().uri);
