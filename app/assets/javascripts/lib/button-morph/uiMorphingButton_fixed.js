@@ -67,8 +67,13 @@
 			if( closeEl ) {
 				closeEl.addEventListener( 'click', function() { self.toggle(); } );
 			}
+
 			var maskEl = this.el.parentNode.querySelector( '.morph-button-modal' );
-			maskEl.addEventListener( 'click', function() { self.toggle(); } );
+			maskEl.addEventListener( 'click', function(e) { 
+				if( !$(e.target).parents('.media-card-social') ){
+					self.toggle();
+				}
+			} );
 		}
 	}
 
