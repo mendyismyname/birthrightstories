@@ -2,7 +2,7 @@
   .media-card-container
     .morph-button.morph-button-fixed.morph-button-modal.morph-button-modal-3
       -# .media-card-tile.media-card-tile-visible{ data: {uri: instagram_media.thumbnail_image_url }}
-      .media-card-tile.media-card-tile-visible
+      .media-card-tile.media-card-tile-visible{ class: "media-card-loaded-#{rand(1..17)}" }
         = image_tag instagram_media.thumbnail_image_url
       
       - if instagram_media.is_video?

@@ -193,10 +193,13 @@ $ ->
     bufferPx:      300
 
   applyImageOpacity = (container) ->
-    $(container).find('.media-card-tile-visible').each (elem) ->
-      $(this).imagesLoaded -> 
-        rand = Math.floor(Math.random() * 17) + 1
-        $(this).addClass('media-card-loaded').addClass('media-card-loaded-' + rand)
+
+    $(container).find('.media-card-tile-visible').imagesLoaded (elems) ->
+      $(this).addClass('media-card-loaded')
+    # $(container).find('.media-card-tile-visible').each (elem) ->
+    #   $(this).imagesLoaded -> 
+    #     rand = Math.floor(Math.random() * 17) + 1
+    #     $(this).addClass('media-card-loaded').addClass('media-card-loaded-' + rand)
 
     
     window.addSubMorphs($(container).find('.morph-button').get())
