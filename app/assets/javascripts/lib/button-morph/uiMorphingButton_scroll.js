@@ -52,6 +52,8 @@
                 $(this).addClass('media-card-tile-image-loaded');
               });
             }
+            new Share('.media-card-social');
+            
             // don't allow to scroll
             noScroll();
 

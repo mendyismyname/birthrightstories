@@ -251,7 +251,10 @@
                 opacity: 1;
             }
         }     
-        .media-card-social {}   
+    }
+    .media-card-social {
+        margin: auto;
+        padding-top: 1em;
     }
     .media-card-tile-info {
         float: right;
