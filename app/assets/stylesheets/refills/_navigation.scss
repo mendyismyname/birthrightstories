@@ -45,9 +45,19 @@ $nav-height-expanded: 300px;
     }
     .nav-logo-wrapper{
       padding: 0.5em 0;
-    }
-    .nav-logo-wrapper img{
-      max-height: 100%;
+
+      img{
+        max-height: 100%;
+      }
+      .logo-main-copy{
+        height: 50%;
+        line-height: 60px;
+        vertical-align: middle;
+        margin-top: -30px;
+        display: inline-block;
+
+      }
+
     }
     .nav-panel{
       width: 100%;
@@ -103,6 +113,9 @@ $nav-height-expanded: 300px;
   .nav-logo-wrapper .logo-main-copy{
     max-height: 20%;
     width: auto;
+    max-width: 237px;
+    display: block;
+    margin: auto;
   }  
 
   .nav-panel-wrapper{
