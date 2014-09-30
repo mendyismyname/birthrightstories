@@ -13,3 +13,9 @@
 //= require lib/button-morph/uiMorphingButton_scroll
 
 //= require modules/hashtag
+
+$(document).ready(function(){
+  if(window.autoexpand_id){
+    $('#media-card-' + window.autoexpand_id + ' .morph-button').click();
+  }
+});

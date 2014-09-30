@@ -1,2 +1,3 @@
 .media-cards
-  = render partial: 'instagram_medias/instagram_media_card', collection: instagram_medias_rand, as: :instagram_media, cache: ->(item) { [item, locale] }
+  - selection = (instagram_medias + [selected].compact).uniq.shuffle
+  = render partial: 'instagram_medias/instagram_media_card', collection: instagram_medias, as: :instagram_media, cache: ->(item) { [item, locale] }

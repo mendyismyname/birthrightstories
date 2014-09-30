@@ -49,10 +49,10 @@ class InstagramMedia < ActiveRecord::Base
   serialize :comments,       Array
   serialize :users_in_photo, Array
 
-  scope :randomized,  -> { order('RAND()') }
-  scope :displayable, -> { where(is_displayable: true) }
-  scope :only_videos, -> { where(media_type: 'video') }
-  scope :only_images, -> { where(media_type: 'image') }
+  scope :randomized,          -> { order('RAND()') }
+  scope :only_videos,         -> { where(media_type: 'video') }
+  scope :only_images,         -> { where(media_type: 'image') }
+  scope :displayable,         -> { where(is_displayable: true) }
 
   before_save :serialize_attrs
   # before_save :sanitize_emoticons
