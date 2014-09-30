@@ -10,7 +10,7 @@ class HashtagController < ApplicationController
                                                   .displayable
                                                   .page(current_page).per(24)
                                                   .includes(:instagram_user) }
-  expose(:selected)                      { InstagramMedia.find(autoexpand_id) if autoexpand_id }
+  expose(:selected)                      { [InstagramMedia.find(autoexpand_id)].compact if autoexpand_id && (current_page.blank? || current_page == 1)}
   expose(:current_story_count)           { '400,000' }
 
   expose(:other_available_locales) { I18n.available_locales.find_all {|l| l != I18n.locale } }
