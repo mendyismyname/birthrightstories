@@ -205,6 +205,12 @@
     @include vertical-horizontal-center-container;
     h5 {
         @include vertical-horizontal-center-content;
+        .media-card-tile-overlay-top{
+            font-weight:normal;
+        }   
+        .media-card-tile-overlay-bottom{
+            font-weight:bold;
+        }
     }
 }
 
