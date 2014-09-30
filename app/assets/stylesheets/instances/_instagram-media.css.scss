@@ -70,13 +70,15 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
   background-color: white;
 
   .icon-close{
+    padding: 0.5em 1em 0 0;
+    font-size: 1em;    
     cursor: pointer;
-    padding: 0.8em 1em 0 0;
+    // padding: 0.8em 1em 0 0;
     color: #cdcdcd;
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 1.5em;
+    // font-size: 1.5em;
     @include transition(color 0.3s ease-in-out);
     &:hover{
       color: #999;
