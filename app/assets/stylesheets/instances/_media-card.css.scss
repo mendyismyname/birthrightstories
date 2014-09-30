@@ -291,7 +291,7 @@
 .media-cards {
     @include clearfix;
     .media-card {
-        @extend %media-card-border;
+        // @extend %media-card-border;
         @extend %media-card-layout;
         @extend %media-card-hover-strategy;
         @include transition(all 0.2s ease-in-out);
