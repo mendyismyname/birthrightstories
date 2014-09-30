@@ -88,9 +88,11 @@ $nav-height-expanded: 300px;
     height: 100%;
   }
 
-  .nav-logo,
-  .nav-panel{
+  .nav-logo{
     @include span-columns(12);
+  }
+  .nav-panel{
+    display: none;
   }
   @include media(em(920)) {
     .nav-logo,
@@ -181,13 +183,12 @@ $nav-height-expanded: 300px;
   @include transition (height 0.3s ease-in-out);
   // }
 
-  .nav-logo,
-  .nav-locale-menu-link,
-  .nav-logo-wrapper,
+  // .nav-logo,
+  // .nav-locale-menu-link,
+  // .nav-logo-wrapper,
   .nav-logo-wrapper img,
   .nav-panel-wrapper {
     @include transition (all 0.3s ease-in-out);
-
   }
 
 
