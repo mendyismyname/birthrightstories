@@ -200,7 +200,8 @@
         padding: 0.3em;
     }
     background: transparentize($taglit-blue, 0.2);
-    color: transparentize(white, 0.2);
+    // color: transparentize(white, 0.2);
+    color: white;
     @include vertical-horizontal-center-container;
     h5 {
         @include vertical-horizontal-center-content;
