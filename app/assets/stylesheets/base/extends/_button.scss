@@ -1,7 +1,7 @@
 %button {
   -webkit-font-smoothing: antialiased;
   background-color: $base-button-color;
-  border-radius: $base-border-radius;
+  border-radius: 5px; //$base-border-radius;
   color: $taglit-blue;
   display: inline-block;
   font-size: $base-font-size;
@@ -10,7 +10,8 @@
   padding: .3em 0.9em;
   text-decoration: none;
 
-  border: 0.2em solid transparentize($taglit-blue, 0.1);
+  // border: 0.2em solid transparentize($taglit-blue, 0.1);
+  border: 0.2em solid transparent;
 
   &:hover {
     border: 0.2em solid white;

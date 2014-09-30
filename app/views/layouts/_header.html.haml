@@ -5,9 +5,9 @@
     .nav-locale-menu
       .nav-locale-menu-wrapper
         .nav-locale-menu-link
-          = link_to '#' do
+          = link_to '#', onclick: "$('.nav-locale-menu-submenu').toggleClass('expanded'); return false;" do
             %span.taglit= t('header.taglit_hash')
-            = image_tag t('images.flag', height: 60)     
+            = image_tag t('images.flag'), height: 18
 
             %ul.nav-locale-menu-submenu
               - other_available_locales.each do |locale|
@@ -31,7 +31,7 @@
           %h5= t('header.headline')
         .nav-follow-up
           -# = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
-          = link_to t('header.follow_up'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"      
+          = link_to t('header.follow_up'), '#', onclick: "return false;"      
         .nav-learn-more
           = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
 
