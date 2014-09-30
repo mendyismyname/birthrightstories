@@ -33,6 +33,10 @@ $nav-height-expanded: 300px;
     height: $nav-height-minimized;
     line-height: $nav-height-minimized;
 
+    .nav-learn-more{
+      display: none !important;
+    }
+
     .nav-container{
       max-width: 100%;
     }
@@ -41,6 +45,9 @@ $nav-height-expanded: 300px;
     }
     .nav-logo-wrapper{
       padding: 0.5em 0;
+    }
+    .nav-logo-wrapper img{
+      max-height: 100%;
     }
     .nav-panel{
       width: 100%;
@@ -89,10 +96,14 @@ $nav-height-expanded: 300px;
 
 
   // .nav-logo-wrapper,
-  .nav-logo-wrapper img{
-    height: 100%;
+  .nav-logo-wrapper .logo-main{
+    max-height: 80%;
     width: auto;
   }
+  .nav-logo-wrapper .logo-main-copy{
+    max-height: 20%;
+    width: auto;
+  }  
 
   .nav-panel-wrapper{
     padding: 17% 0;
@@ -149,6 +160,8 @@ $nav-height-expanded: 300px;
 
   .nav-logo,
   .nav-locale-menu-link,
+  .nav-logo-wrapper,
+  .nav-logo-wrapper img,
   .nav-panel-wrapper {
     @include transition (all 0.3s ease-in-out);
 
@@ -163,6 +176,12 @@ $nav-height-expanded: 300px;
   }
   .nav-follow-up a{
     @extend button;
+  }
+  .nav-story-count h1{
+    font-family: Conv_Minik-Bold;
+  }
+  .nav-learn-more{
+    text-transform:uppercase;
   }
 }
 
@@ -418,7 +437,6 @@ header.nav{
     font-size: 6.45em;
     font-weight: 300;
     line-height: 75px;
-    font-family: Conv_Minik-Bold;
   }
   .nav-headline h5{
     font-size: 1.45em;
@@ -431,7 +449,6 @@ header.nav{
   }
   .nav-learn-more{
     font-size: 1.25em;
-    text-transform:uppercase;
     line-height: 50px;
   }
   .smaller{
