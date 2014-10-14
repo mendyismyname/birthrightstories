@@ -1,38 +1,43 @@
 (function() {
   var docElem = window.document.documentElement, didScroll, scrollPosition;
 
+  window.scrollPage = function() {
+    scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
+    didScroll = false;
+  };
+
+  window.scrollHandler = function() {
+    if( !didScroll ) {
+      didScroll = true;
+      setTimeout( function() { window.scrollPage(); }, 60 );
+    }
+  };
+
   // trick to prevent scrolling when opening/closing button
   window.noScrollFn = function() {
     window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
   }
 
   window.noScroll = function() {
-    window.removeEventListener( 'scroll', scrollHandler );
-    window.addEventListener( 'scroll', noScrollFn );
+    console.log('no scroll')
+    window.removeEventListener( 'scroll', window.scrollHandler );
+    window.addEventListener( 'scroll', window.noScrollFn );
   }
 
   window.scrollFn = function() {
-    window.addEventListener( 'scroll', scrollHandler );
+    window.addEventListener( 'scroll', window.scrollHandler );
   }
 
   window.canScroll = function() {
-    window.removeEventListener( 'scroll', noScrollFn );
-    scrollFn();
+    console.log('can scroll')
+    window.removeEventListener( 'scroll', window.noScrollFn );
+    window.scrollFn();
   }
 
-  window.scrollHandler = function() {
-    if( !didScroll ) {
-      didScroll = true;
-      setTimeout( function() { scrollPage(); }, 60 );
-    }
-  };
 
-  window.scrollPage = function() {
-    scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
-    didScroll = false;
-  };
 
-  scrollFn();
+
+  window.scrollFn();
 
   // $('body').on('click', '.morph-button' , function(e){
   // });
@@ -72,18 +77,17 @@
               });
             }
             new Share('#' + elem.parents('.media-card').attr('id') + ' .media-card-social');
-            
-            // don't allow to scroll
-            noScroll();
 
             // Close header
             $('#header-learn').removeClass('opened');
-
+            
+            // don't allow to scroll
+            window.noScroll();
           };
         })(bttn),
         onAfterOpen : function() {
           // can scroll again
-          canScroll();
+          // window.canScroll();
         },
         onBeforeClose : (function(btn) {
 
@@ -94,12 +98,12 @@
               video.attr('src', 'javascript:void(0)');
             }
             // don't allow to scroll
-            noScroll();
+            window.noScroll();
           };
         })(bttn),
         onAfterClose : function() {
           // can scroll again
-          canScroll();
+          window.canScroll();
         }
       } );
     } );
