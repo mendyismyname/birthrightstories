@@ -21,7 +21,7 @@
     $expanded-width-and-offset: calc( #{$expanded-width} - #{$pixel-offset});
 
     $expanded-height: $expanded-width / 2;
-    $expanded-height-vertical: $expanded-width * 2;
+    $expanded-height-vertical: $expanded-width * 1.75;
 
     width: $width;
     max-width: $expanded-width-and-offset;
@@ -68,10 +68,13 @@
             padding-bottom: $expanded-height-vertical;
             // @if $columns == 6 {
             margin-left: -1 * ($expanded-width / 2);            
-            margin-top: -1 * $expanded-height * 2;            
+            margin-top: -1 * $expanded-height * 1.75;            
             // }
             // @include maintain-aspect-ratio(2 3);
-            .media-card-tile-image,
+            .media-card-tile-image{
+                width: 100%;
+                height: 50%;
+            }
             .media-card-tile-info {
                 width: 100%;
                 height: 50%;
