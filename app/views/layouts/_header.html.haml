@@ -31,10 +31,10 @@
         .nav-headline
           %h5= t('header.headline')
         .nav-follow-up
-          -# = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
-          = link_to t('header.follow_up'), '#', onclick: "return false;"      
-        .nav-learn-more
-          = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
+          = link_to t('header.follow_up'), '#', onclick: "$('#header-form').toggleClass('opened'); return false;"
+          -# = link_to t('header.follow_up'), '#', onclick: "return false;"      
+        -# .nav-learn-more
+        -#   = link_to t('header.learn_more'), '#', onclick: "$('#header-learn').toggleClass('opened'); return false;"
 
   / Drawer
   #header-learn.nav-drawer
