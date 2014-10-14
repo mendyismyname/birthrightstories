@@ -19,7 +19,7 @@
   }
 
   window.noScroll = function() {
-    console.log('no scroll')
+    // console.log('no scroll')
     window.removeEventListener( 'scroll', window.scrollHandler );
     window.addEventListener( 'scroll', window.noScrollFn );
   }
@@ -29,7 +29,7 @@
   }
 
   window.canScroll = function() {
-    console.log('can scroll')
+    // console.log('can scroll')
     window.removeEventListener( 'scroll', window.noScrollFn );
     window.scrollFn();
   }
