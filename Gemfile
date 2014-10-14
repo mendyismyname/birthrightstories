@@ -79,6 +79,7 @@ gem 'jquery-rails'
 # gem 'turbolinks-redirect'
 gem 'masonry-rails'
 gem "jquery-scrollto-rails"
+gem 'zeroclipboard-rails' # Copy clipboard
 
 ####################################
 # DEVELOPMENT

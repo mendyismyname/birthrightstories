@@ -357,6 +357,8 @@ GEM
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
     yard (0.8.7.4)
+    zeroclipboard-rails (0.1.0)
+      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -415,3 +417,4 @@ DEPENDENCIES
   uglifier
   unicorn (= 4.8.3)
   whenever
+  zeroclipboard-rails
