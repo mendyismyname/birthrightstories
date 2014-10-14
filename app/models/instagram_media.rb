@@ -117,5 +117,10 @@ class InstagramMedia < ActiveRecord::Base
     media_type == 'video'
   end
 
+  def toggle_display
+    self.is_displayable = !is_displayable
+    save
+  end
+
 
 end
