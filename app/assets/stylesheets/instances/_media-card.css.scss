@@ -270,13 +270,22 @@
         }     
     }
     .media-card-social {
-        @include position(absolute, null 2.5em 2.5em null);
+        @include position(absolute, null 1em 1em null);
         margin-left: auto;
         margin-right: auto;  
     
     }   
     .media-card-social-btn {
         display: inline-block !important;
+        vertical-align: super;
+
+        label{
+            border-radius: 2px;
+            padding: 0 !important;
+            font-size: 14px;
+            background: $taglit-blue;
+            color: white;
+        }
     }
     .media-card-fb-like {
         overflow: hidden;
