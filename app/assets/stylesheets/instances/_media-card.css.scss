@@ -21,7 +21,7 @@
     $expanded-width-and-offset: calc( #{$expanded-width} - #{$pixel-offset});
 
     $expanded-height: $expanded-width / 2;
-    $expanded-height-vertical: $expanded-width * 1.75;
+    $expanded-height-vertical: $expanded-width * 1.6;
 
     width: $width;
     max-width: $expanded-width-and-offset;
@@ -68,7 +68,7 @@
             padding-bottom: $expanded-height-vertical;
             // @if $columns == 6 {
             margin-left: -1 * ($expanded-width / 2);            
-            margin-top: -1 * $expanded-height * 1.75;            
+            margin-top: -1 * $expanded-height * 1.6;            
             // }
             // @include maintain-aspect-ratio(2 3);
             .media-card-tile-image{
