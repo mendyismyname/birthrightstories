@@ -190,7 +190,7 @@ $ ->
       msg:         null
       msgText:     ''
     # extraScrollPx: 350
-    bufferPx:      300
+    bufferPx:      700
 
   applyImageOpacity = (container) ->
 

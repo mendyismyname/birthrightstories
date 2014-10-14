@@ -8,7 +8,7 @@ class HashtagController < ApplicationController
   expose(:autoexpand_id)                 { params[:autoexpand_id] || false }
   expose(:instagram_medias)              { hashtag.instagram_medias
                                                   .displayable
-                                                  .page(current_page).per(24)
+                                                  .page(current_page).per(20)
                                                   .includes(:instagram_user) }
   expose(:selected)                      { autoexpaned_selection }
   expose(:current_story_count)           { '400,000' }
