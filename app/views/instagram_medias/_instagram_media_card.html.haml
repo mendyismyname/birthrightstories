@@ -23,7 +23,7 @@
 
             .media-card-tile-image
               - if instagram_media.is_video?
-                = video_tag 'loader.gif', controls: false, autobuffer: false, autoplay: true, data: {uri: instagram_media.standard_resolution_video_url}
+                = video_tag 'loader.gif', controls: false, autobuffer: false, autoplay: true, data: {uri: instagram_media.standard_resolution_video_url, photo: instagram_media.standard_resolution_image_url}
                 -# = video_tag instagram_media.standard_resolution_video_url, controls: true
               - else
                 = image_tag 'loader.gif', data: {uri: instagram_media.standard_resolution_image_url}
@@ -34,7 +34,13 @@
                   %p= instagram_media.instagram_user.username_tag
               .media-card-caption
                 = instagram_media.caption_text
+              
 
               .media-card-social
+                -# .media-card-fb-like{data: {height: '20px', width: '92px', action: "like", href: "https://developers.facebook.com/docs/plugins/", layout: "button", share: "false", "show-faces" => "false"}}
+                .media-card-fb-like{data: {action: "like", href: "http://www.birthrightisrael.com/?autoexpand_id=#{instagram_media.id}", layout: "button", share: "false", "show-faces" => "false"}}
+                .media-card-social-btn
+                -# .fb-like{data: {action: "like", href: "https://developers.facebook.com/docs/plugins/", layout: "button", share: "false", "show-faces" => "false"}}
+                
                 -# = button_to 'F Like', '#'
                 -# = button_to 'Share', '#'

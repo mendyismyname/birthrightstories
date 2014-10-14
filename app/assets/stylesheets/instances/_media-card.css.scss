@@ -270,10 +270,17 @@
         }     
     }
     .media-card-social {
-        @include position(absolute, null 0 2.5em 0);
+        @include position(absolute, null 2.5em 2.5em null);
         margin-left: auto;
-        margin-right: auto;        
+        margin-right: auto;  
+    
     }   
+    .media-card-social-btn {
+        display: inline-block !important;
+    }
+    .media-card-fb-like {
+        overflow: hidden;
+    }      
     .media-card-tile-info {
         float: right;
         padding: 1em;

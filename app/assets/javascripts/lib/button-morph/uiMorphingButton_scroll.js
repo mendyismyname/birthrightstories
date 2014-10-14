@@ -79,9 +79,12 @@
 
             var shareConfig = {
               url: window.location.href.split('?').shift() + '?autoexpand_id=' + elem.parent().parent().attr('id').replace('media-card-', ''),
-              image: img.data().uri,
+              image: video.length ? video.data().photo : img.data().uri,
               title: '400,000 ' + $('.nav-headline h5').html(),
-              description: $('.nav-follow-up a').html(),
+              description: elem.find('.media-card-caption').html(),
+              ui: {
+               flyout: 'top left'
+              },
               networks: {
                 twitter: {
                   enabled: true,
@@ -95,7 +98,10 @@
                 pinterest: {enabled: false}
               }
             };
-            window.shareBtn = new Share('#' + elem.parents('.media-card').attr('id') + ' .media-card-social', shareConfig);
+            window.shareBtn = new Share('#' + elem.parents('.media-card').attr('id') + ' .media-card-social-btn', shareConfig);
+
+            // Facebook Like button
+            window.fbLikeBtn = elem.find('.media-card-fb-like').addClass('fb-like')
 
             // Close header
             $('#header-learn').removeClass('opened');
@@ -107,6 +113,9 @@
         onAfterOpen : function() {
           // can scroll again
           // window.canScroll();
+
+            // window.FB.XFBML.parse(window.fbLikeBtn[0]);
+            window.FB.XFBML.parse();
         },
         onBeforeClose : (function(btn) {
 
