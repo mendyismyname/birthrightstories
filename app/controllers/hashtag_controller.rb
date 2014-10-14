@@ -12,6 +12,7 @@ class HashtagController < ApplicationController
                                                   .includes(:instagram_user) }
   expose(:selected)                      { autoexpaned_selection }
   expose(:current_story_count)           { '400,000' }
+  expose(:share_base_url)                { 'http://www.birthrightisrael.com' }
 
   expose(:other_available_locales) { I18n.available_locales.find_all {|l| l != I18n.locale } }
 

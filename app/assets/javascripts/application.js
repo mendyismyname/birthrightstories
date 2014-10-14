@@ -3,7 +3,8 @@
 
 //= require masonry/jquery.imagesloaded.min
 //= require masonry/jquery.infinitescroll.min
-//
+//= require zeroclipboard
+
 //= require lib/throttle
 //= require lib/share.min
 
