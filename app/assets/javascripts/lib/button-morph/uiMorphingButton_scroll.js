@@ -76,7 +76,15 @@
                 $(this).addClass('media-card-tile-image-loaded');
               });
             }
-            new Share('#' + elem.parents('.media-card').attr('id') + ' .media-card-social');
+
+            var shareConfig = {
+              url: window.location.href.split('?').shift() + '?autoexpand_id=' + elem.parent().parent().attr('id').replace('media-card-', ''),
+              networks: {
+                google_plus: {enabled: false},
+                pinterest: {enabled: false}
+              }
+            };
+            new Share('#' + elem.parents('.media-card').attr('id') + ' .media-card-social', shareConfig);
 
             // Close header
             $('#header-learn').removeClass('opened');
