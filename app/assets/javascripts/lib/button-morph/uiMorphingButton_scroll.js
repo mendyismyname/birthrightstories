@@ -80,6 +80,10 @@
             var shareConfig = {
               url: window.location.href.split('?').shift() + '?autoexpand_id=' + elem.parent().parent().attr('id').replace('media-card-', ''),
               networks: {
+                facebook: {
+                  enabled: true,
+                  app_id: 717106305044262
+                },
                 google_plus: {enabled: false},
                 pinterest: {enabled: false}
               }
