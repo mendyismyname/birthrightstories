@@ -80,12 +80,12 @@
             var shareConfig = {
               url: window.location.href.split('?').shift() + '?autoexpand_id=' + elem.parent().parent().attr('id').replace('media-card-', ''),
               image: img.data().uri,
-              title: $('.nav-headline h5').html(),
+              title: '400,000 ' + $('.nav-headline h5').html(),
               description: $('.nav-follow-up a').html(),
               networks: {
                 twitter: {
                   enabled: true,
-                  description: $('.nav-headline h5').html() + ' ' + $('.nav-follow-up a').html()
+                  description: '400,000 ' + $('.nav-headline h5').html() + ' ' + $('.nav-follow-up a').html()
                 },
                 facebook: {
                   enabled: true,
