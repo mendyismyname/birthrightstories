@@ -298,7 +298,8 @@
     .media-card-caption {
         text-align: left;
         max-height: 50%;
-        overflow: scroll;        
+        overflow: scroll;
+        overflow-x: hidden;        
     }
 }
 
