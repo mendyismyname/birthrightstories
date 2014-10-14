@@ -7,6 +7,7 @@
     $pixel-offset:     nth($options, 4);
     $layout:           nth($options, 5);
     $columns-total:    nth($options, 6);
+    $smush:            nth($options, 7);
 
 
     // $expansion-map: (1: 3, 2: 3, 3: 3, 4: 3, 6: 2, 8: 1, 12: 1);
@@ -21,7 +22,7 @@
     $expanded-width-and-offset: calc( #{$expanded-width} - #{$pixel-offset});
 
     $expanded-height: $expanded-width / 2;
-    $expanded-height-vertical: $expanded-width * 1.6;
+    // $expanded-height-vertical: $expanded-width * 1.6;
 
     width: $width;
     max-width: $expanded-width-and-offset;
@@ -65,10 +66,10 @@
             }                
         } @else{
             width: $expanded-width;
-            padding-bottom: $expanded-height-vertical;
+            padding-bottom: $expanded-width * $smush;
             // @if $columns == 6 {
             margin-left: -1 * ($expanded-width / 2);            
-            margin-top: -1 * $expanded-height * 1.6;            
+            margin-top: -1 * $expanded-height * $smush;            
             // }
             // @include maintain-aspect-ratio(2 3);
             .media-card-tile-image{
@@ -94,11 +95,11 @@
 }
 
 %media-card-layout {
-    $grid-item-smallest-columns: (1 null 1 0px vertical 1);
-    $grid-item-small-columns:    (1 null 3 0px vertical 3);
-    $grid-item-medium-columns:   (1 null 5 0px horizontal 5);
-    $grid-item-large-columns:    (1 null 6 0px horizontal 8);
-    $grid-item-larger-columns:   (1 null 6 0px horizontal 10);
+    $grid-item-smallest-columns: (1 null 1 0px vertical 1 1.6);
+    $grid-item-small-columns:    (1 null 3 0px vertical 3 1.3);
+    $grid-item-medium-columns:   (1 null 5 0px horizontal 5 null);
+    $grid-item-large-columns:    (1 null 6 0px horizontal 8 null);
+    $grid-item-larger-columns:   (1 null 6 0px horizontal 10 null);
 
     @include grid-item-columns($grid-item-smallest-columns);
 
