@@ -198,6 +198,8 @@
 
 %media-card-tile-overlay {
     .media-card-tile-overlay {
+        background: image-url('corner_icon.png');
+        background-size: cover;
         display: table;
         height: 100%;
         width: 100%;
