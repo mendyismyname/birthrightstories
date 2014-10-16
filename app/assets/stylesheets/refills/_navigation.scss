@@ -463,8 +463,6 @@ header.nav{
 }
 
 
-// This code is really bad #REFACTOR
-
 .nav:not(.smaller){
   .nav-story-count h1{
     font-size: 6.45em;
@@ -484,24 +482,6 @@ header.nav{
     font-size: 1.25em;
     line-height: 50px;
   }
-  // .smaller{
-  //   .nav-story-count h1{
-  //     font-size: 5em;
-  //     font-weight: 300;
-  //     line-height: 75px;
-  //   }
-  //   // .nav-headline h5{
-  //   //   font-size: 1.25em;
-  //   //   font-weight: 800;
-  //   //   line-height: 40px;
-  //   // }
-  //   .nav-follow-up a{
-  //     width: 268px;
-  //   }
-  //   .nav-learn-more{
-  //     font-size: 1.25em;
-  //   }    
-  // }
 }
 
 .locale-es{
@@ -519,120 +499,7 @@ header.nav{
     }
   }
 }
-// .locale-iw{
-//   .nav:not(.smaller){
-//     .nav-story-count h1{
-//       font-size: 5em;
-//       font-weight: 300;
-//       line-height: 75px;
-//     }
-//     .nav-headline h5{
-//       font-size: 2.95em;
-//       font-weight: 800;
-//       line-height: 50px;
-//     }
-//     .nav-follow-up a{
-//       width: 268px;
-//     }
-//     .nav-learn-more{
-//       font-size: 1.25em;
-//     }
-//     .smaller{
-//       .nav-story-count h1{
-//         font-size: 5em;
-//         font-weight: 300;
-//         line-height: 75px;
-//       }
-//       .nav-headline h5{
-//         font-size: 1.25em;
-//         font-weight: 800;
-//         line-height: 40px;
-//       }
-//       .nav-follow-up a{
-//         width: 268px;
-//       }
-//       .nav-learn-more{
-//         font-size: 1.25em;
-//       }    
-//     }
-//   }
-// }
-// .locale-pt{
-//   .nav:not(.smaller){
-//     .nav-story-count h1{
-//       font-size: 5em;
-//       font-weight: 300;
-//       line-height: 75px;
-//     }
-//     .nav-headline h5{
-//       font-size: 1.23em;
-//       font-weight: 800;
-//       line-height: 40px;
-//     }
-//     .nav-follow-up a{
-//       width: 268px;
-//     }
-//     .nav-learn-more{
-//       font-size: 1.25em;
-//     }
-//     .smaller{
-//       .nav-story-count h1{
-//         font-size: 5em;
-//         font-weight: 300;
-//         line-height: 75px;
-//       }
-//       .nav-headline h5{
-//         font-size: 1.25em;
-//         font-weight: 800;
-//         line-height: 40px;
-//       }
-//       .nav-follow-up a{
-//         width: 268px;
-//       }
-//       .nav-learn-more{
-//         font-size: 1.25em;
-//       }    
-//     }
-//   }
-// }
-// .locale-ru{
-//   .nav:not(.smaller){
-//     .nav-story-count h1{
-//       font-size: 5em;
-//       font-weight: 300;
-//       line-height: 75px;
-//     }
-//     .nav-headline h5{
-//       font-size: 1.37em;
-//       font-weight: 800;
-//       line-height: 40px;
-//     }
-//     .nav-follow-up a{
-//       width: 268px;
-//     }
-//     .nav-learn-more{
-//       font-size: 1.25em;
-//     }
-//     .smaller{
-//       .nav-story-count h1{
-//         font-size: 5em;
-//         font-weight: 300;
-//         line-height: 75px;
-//       }
-//       .nav-headline h5{
-//         font-size: 1.25em;
-//         font-weight: 800;
-//         line-height: 40px;
-//       }
-//       .nav-follow-up a{
-//         width: 268px;
-//       }
-//       .nav-learn-more{
-//         font-size: 1.25em;
-//       }    
-//     }
-//   }
-// }
+
 
 .nav-buffer{
   height: $nav-height-expanded;
