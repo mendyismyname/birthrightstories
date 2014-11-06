@@ -78,9 +78,9 @@
             }
 
             var locationURI = window.location.href.split('?').shift() + '?autoexpand_id=' + elem.parent().parent().attr('id').replace('media-card-', '');
-            var headline = ['400,000', $('.nav-headline h5').html()].join(' ');
-            var caption = elem.find('.media-card-caption').html().trim();
-            var username = elem.find('.media-card-author p').html().trim();
+            var headline = encodeURIComponent(['400,000', $('.nav-headline h5').html()].join(' '));
+            var caption = encodeURIComponent(elem.find('.media-card-caption').html().trim());
+            var username = encodeURIComponent(elem.find('.media-card-author p').html().trim());
 
             var shareConfig = {
               url: locationURI,
