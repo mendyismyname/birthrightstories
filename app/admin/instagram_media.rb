@@ -15,6 +15,30 @@ ActiveAdmin.register InstagramMedia do
   # end
 
 
+
+  batch_action :display_toggle do |selection|
+    InstagramMedia.find(selection).each do |instagram_media|
+      instagram_media.toggle_display
+    end
+    redirect_to admin_instagram_media_path, notice: "Updated!"
+  end
+
+  batch_action :display_enable do |selection|
+    InstagramMedia.find(selection).each do |instagram_media|
+      instagram_media.is_displayable = true
+      instagram_media.save
+    end
+    redirect_to admin_instagram_media_path, notice: "Updated!"
+  end  
+
+  batch_action :display_disable do |selection|
+    InstagramMedia.find(selection).each do |instagram_media|
+      instagram_media.is_displayable = false
+      instagram_media.save
+    end
+    redirect_to admin_instagram_media_path, notice: "Updated!"
+  end    
+
   member_action :toggle_display, method: :put do
     instagram_media = InstagramMedia.find(params[:id])
     instagram_media.toggle_display
@@ -22,10 +46,11 @@ ActiveAdmin.register InstagramMedia do
   end
 
   index do
+    selectable_column
     id_column
 
     actions defaults: false do |resource|
-      title = resource.is_displayable ? 'Disable' : 'Enable'
+      title = resource.is_displayable ? 'Enabled' : 'Disabled'
       klass = resource.is_displayable ? 'yes' : 'no'
       link_to toggle_display_admin_instagram_medium_path(resource), method: :put do 
         content_tag(:span, title, class: "status_tag #{klass}")
