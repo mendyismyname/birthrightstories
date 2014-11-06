@@ -15,23 +15,12 @@ $base-body-color: #eee;
 @import "neat";
 @import "base/base";
 
-// @import "lib/button-morph/demo";
-// @import "lib/button-morph/component";
-// @import "lib/button-morph/content";
-
 @import "mixins/maintain-aspect-ratio";
-
 @import "refills/navigation";
-// @import "refills/grid-items";
-// @import "refills/hover-tile-animation";
-// @import "refills/modal";
-
-
 
 @import "instances/hashtag";
 @import "instances/media-card";
 @import "instances/instagram-media";
-
 
 body{
   background: #fff;

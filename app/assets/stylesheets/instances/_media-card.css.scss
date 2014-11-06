@@ -1,6 +1,5 @@
 @mixin grid-item-columns($options) {
     
-
     $columns:          nth($options, 1);
     $col-aspect-ratio: nth($options, 2);
     $expansion:        nth($options, 3);
@@ -9,20 +8,11 @@
     $columns-total:    nth($options, 6);
     $smush:            nth($options, 7);
 
-
-    // $expansion-map: (1: 3, 2: 3, 3: 3, 4: 3, 6: 2, 8: 1, 12: 1);
-    // $expansion-layout-map: (1: horizontal, 2: horizontal, 3: horizontal, 4: vertical, 6: vertical, 8: vertical, 12: vertical);
-    
-    // $expansion: map-get($expansion-map, $columns);
-
-    // $col-aspect-ratio: abs( $columns - $expansion );
-
     $width: 100% / $columns-total * $columns;
     $expanded-width: $width * $expansion;
     $expanded-width-and-offset: calc( #{$expanded-width} - #{$pixel-offset});
 
     $expanded-height: $expanded-width / 2;
-    // $expanded-height-vertical: $expanded-width * 1.6;
 
     width: $width;
     max-width: $expanded-width-and-offset;
@@ -38,24 +28,13 @@
         overflow:hidden;
     }
 
-    // &.media-card-expanded,
     .open .morph-content {
-        
-        // height: 420px;
-        // margin-top: (-1 * $expanded-width)/2;
-        // margin-left: 210px;
-        // margin-right: 0;
-        // margin-bottom: 0;
-
-        // @include maintain-aspect-ratio( $columns $col-aspect-ratio );
-
         @if $layout == horizontal {
             width: $expanded-width;
             margin-left: -1 * ($expanded-width / 2);
             padding-bottom: $expanded-height;
             margin-top: -1 * ($expanded-height / 2);
-        // @if map-get($expansion-layout-map, $columns) == horizontal{
-            // @include maintain-aspect-ratio(3 2);
+
             .media-card-tile-image{
                 height: 100%;
                 width: 50%;
@@ -67,11 +46,9 @@
         } @else{
             width: $expanded-width;
             padding-bottom: $expanded-width * $smush;
-            // @if $columns == 6 {
             margin-left: -1 * ($expanded-width / 2);            
             margin-top: -1 * $expanded-height * $smush;            
-            // }
-            // @include maintain-aspect-ratio(2 3);
+
             .media-card-tile-image{
                 width: 100%;
                 height: 50%;
@@ -111,23 +88,13 @@
     }    
     @include media($large-screen-within) {
         @include grid-item-columns($grid-item-large-columns);
-        // .media-card-tile-overlay {
-        //     font-size: 0.7em;
-        // }
-
     }
     @include media($larger-screen-within) {
         @include grid-item-columns($grid-item-larger-columns);
-        // .media-card-tile-overlay {
-        //     font-size: 0.5em;
-        // }
     }  
 }
 
 %media-card-bg-img {
-    // background-position: bottom;
-    // background-size: cover;
-    
     img{
         position: absolute;
         left: 0;
@@ -140,7 +107,6 @@
 
     opacity: 0;
     &.media-card-loaded{
-        // @include transition-timing-function(cubic-bezier(0.7,0,0.3,1));
         opacity: 1;
     }
     &.media-card-loaded-1{
@@ -206,7 +172,6 @@
         padding: 0.3em;
     }
     background: transparentize($taglit-blue, 0.2);
-    // color: transparentize(white, 0.2);
     color: white;
     @include vertical-horizontal-center-container;
     h5 {
@@ -240,7 +205,6 @@
 }
 
 %media-card-expanded-layout {
-    // margin: 0.5em;
     border: 0.5em solid $taglit-blue;
     cursor: auto;
 
@@ -263,9 +227,7 @@
             max-width: 100%;            
             width: 100%;
             height: auto;
-            // @include transition(opacity, 1.2s ease-in-out);
             opacity: 0;
-            // @include vertical-align;
             &.media-card-tile-image-loaded{
                 opacity: 1;
             }
@@ -316,10 +278,6 @@
         float: right;
         padding: 1em;
         position: relative
-
-      // .media-card-tile-info-wrapper {
-      //       @include vertical-align;
-      //   }
     }
     .media-card-author {
         a {
@@ -348,7 +306,6 @@
 .media-cards {
     @include clearfix;
     .media-card {
-        // @extend %media-card-border;
         @extend %media-card-layout;
         @extend %media-card-hover-strategy;
         @include transition(all 0.2s ease-in-out);
@@ -359,7 +316,6 @@
     }
     .media-card-illusion{
         @extend .media-card;
-        // @extend %media-card-border;
 
         .media-card-illusion-inner{
             display: block;
@@ -378,7 +334,6 @@
     }
     .media-card-tile {
         @include position(absolute, 0 0 0 0);
-        // @include transition(all, 0.2s ease-in-out);
         display: inline-block;
     }
     .media-card-tile-visible {
@@ -395,9 +350,5 @@
     }    
     .media-card-tile-expanded {
         @extend %media-card-expanded-layout;
-        // @include transition(opacity, 0.7s ease-in-out);
-        img{
-            // @include transition(opacity, 0.2s ease-in);
-        }
     }
 }

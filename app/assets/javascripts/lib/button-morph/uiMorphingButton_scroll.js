@@ -34,13 +34,7 @@
     window.scrollFn();
   }
 
-
-
-
   window.scrollFn();
-
-  // $('body').on('click', '.morph-button' , function(e){
-  // });
 
   window.addSubMorphs = function(elems){
     [].slice.call( elems ).forEach( function( bttn ) {
@@ -125,7 +119,6 @@
           // can scroll again
           // window.canScroll();
 
-            // window.FB.XFBML.parse(window.fbLikeBtn[0]);
             window.FB.XFBML.parse();
         },
         onBeforeClose : (function(btn) {
@@ -149,8 +142,4 @@
   }
   window.addSubMorphs(document.querySelectorAll( '.morph-button' ));
 
-  // for demo purposes only
-  // [].slice.call( document.querySelectorAll( 'form button' ) ).forEach( function( bttn ) { 
-  //   bttn.addEventListener( 'click', function( ev ) { ev.preventDefault(); } );
-  // } );
 })();  

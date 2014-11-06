@@ -26,9 +26,6 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
 
 
 .morph-button {
-  // position: relative;
-  // display: block;
-  // margin: 0 auto;
   &.open {
     .morph-content {
       pointer-events: auto;
@@ -55,7 +52,6 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
     position: relative;
     padding: 0 1em;
     border: none;
-    // background-color: $color_mandy_approx;
     color: $color_rum_swizzle_approx;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -73,34 +69,22 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
     padding: 0.5em 1em 0 0;
     font-size: 1em;    
     cursor: pointer;
-    // padding: 0.8em 1em 0 0;
     color: #cdcdcd;
     position: absolute;
     top: 0;
     right: 0;
-    // font-size: 1.5em;
     @include transition(color 0.3s ease-in-out);
     &:hover{
       color: #999;
     }
   }
-
-  // background: transparent;
-  // opacity: 0;
 }
 .morph-button-fixed {
-  // width: 300px;
-  // height: 300px;
 
   .morph-content {
-    // width: 300px;
-    // height: 300px;
-    // width: inherit;
-    // height: inherit;
     position: fixed;
     z-index: 900;
     opacity: 0;
-    // background-color: rgba(255,255,255,0);
     @include transition(opacity 0.3s 0.5s, background-color 0.4s 0.2s, padding 0.4s 0.2s, width 0.4s 0.1s, height 0.4s 0.1s, top 0.4s 0.1s, left 0.4s 0.1s, margin 0.4s 0.1s);
     
     > div {
@@ -112,8 +96,6 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
   }
   &.open {
     .morph-content {
-      // background-color: rgba(255,255,255,1);
-
       opacity: 1;
       > div {
         visibility: visible;
@@ -182,9 +164,6 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
     .morph-content {
       top: 50% !important;
       left: 50% !important;
-      // margin: -210px 0 0 -300px;
-      // width: 600px;
-      // height: 420px;
       @include transition(width 0.4s 0.1s, padding 0.4s 0.1s, height 0.4s 0.1s, top 0.4s 0.1s, left 0.4s 0.1s, margin 0.4s 0.1s);
     }
   }
@@ -199,19 +178,13 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
 
 .morph-button-modal-3 {
   .morph-content {
-    // background-color: $color_linen_approx;
     color: $color_mandy_approx;
   }
   > button {
-    // background-color: $color_linen_approx;
     color: $color_mandy_approx;
   }
   &.open .morph-content {
-    // margin: -255px 0 0 -210px;
-    // width: 420px;
-    // height: 510px;
     > div {
-      // height: 420px;
       @include transition(opacity 0.3s 0.3s);
     }
   }
@@ -257,65 +230,3 @@ $color_almond_70_approx: rgba(240,221,204,0.7);
 .no-transition {
   @include transition(none !important);
 }
-// @media screen and(max-width: 600px) {
-//   .morph-button-modal.open .morph-content {
-//     top: 0 !important;
-//     left: 0 !important;
-//     margin: 0;
-//     width: 100%;
-//     height: 100%;
-//     overflow-y: scroll;
-//     @include transition(width 0.4s 0.1s, height 0.4s 0.1s, top 0.4s 0.1s, left 0.4s 0.1s);
-//   }
-// }
-// @media screen and(max-width: 400px) {
-//   .morph-button-fixed {
-//     width: 200px;
-//     height: 80px;
-//     .morph-content {
-//       width: 200px;
-//       height: 80px;
-//     }
-//     > button {
-//       font-size: 75%;
-//     }
-//   }
-//   .morph-button-sidebar {
-//     width: 100% !important;
-//     height: 60px !important;
-//     bottom: 0;
-//     left: 0;
-//     .morph-content {
-//       width: 100% !important;
-//       height: 60px !important;
-//     }
-//     > button {
-//       font-size: 1.6em;
-//     }
-//     &.open .morph-content {
-//       height: 100% !important;
-//     }
-//   }
-//   .morph-button-modal-4 {
-//     width: 220px;
-//     height: 120px;
-//     .morph-content {
-//       width: 220px;
-//       height: 120px;
-//     }
-//     .morph-clone {
-//       right: 83px;
-//       bottom: 26px;
-//     }
-//     > button {
-//       font-size: 100%;
-//       line-height: 50px;
-//       span {
-//         display: block;
-//       }
-//     }
-//   }
-//   .morph-button-inflow .morph-content .morph-clone {
-//     font-size: 0.9em;
-//   }
-// }
