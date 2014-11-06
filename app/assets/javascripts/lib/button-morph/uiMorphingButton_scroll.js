@@ -96,7 +96,9 @@
                 },
                 facebook: {
                   enabled: true,
-                  app_id: 717106305044262
+                  app_id: 717106305044262,
+                  title: headline,
+                  description: [caption, username, locationURI].join(' ')
                 },
                 email: {
                   enabled: true,
