@@ -38,6 +38,7 @@
 
               .media-card-social
                 -# .media-card-fb-like{data: {height: '20px', width: '92px', action: "like", href: "https://developers.facebook.com/docs/plugins/", layout: "button", share: "false", "show-faces" => "false"}}
+                = image_tag 'fblike-bg.png', class: 'media-card-fb-like-mask'
                 .media-card-fb-like{data: {action: "like", href: "#{share_base_url}/?autoexpand_id=#{instagram_media.id}", layout: "button", share: "false", "show-faces" => "false"}}
                 .media-card-social-btn
                 -# .fb-like{data: {action: "like", href: "https://developers.facebook.com/docs/plugins/", layout: "button", share: "false", "show-faces" => "false"}}
