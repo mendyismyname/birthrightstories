@@ -20,6 +20,8 @@
 
     = cache 'card-illusion-michael' do
       .media-cards
+        -# Least common multiple of the grid size:
+        -#  LCM(1,3,5,8,10) == 120 // therefore would need 120 boxes (which is a lot)
         - 24.times do
           .media-card-illusion
             .media-card-container
