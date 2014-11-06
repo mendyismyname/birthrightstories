@@ -233,13 +233,20 @@
             }
         }     
     }
+    // .media-card-social {
+    //     @include position(absolute, null 1em 1em null);
+    //     margin-left: auto;
+    //     margin-right: auto;  
+    //     width: 145px;
+    // }   
+
     .media-card-social {
-        @include position(absolute, null 1em 1em null);
-        margin-left: auto;
+        @include position(absolute, null null 1em 50%);
+        margin-left: -72.5px;
         margin-right: auto;  
         width: 145px;
-    
     }   
+
     .media-card-social-btn {
         display: inline-block !important;
         vertical-align: super;

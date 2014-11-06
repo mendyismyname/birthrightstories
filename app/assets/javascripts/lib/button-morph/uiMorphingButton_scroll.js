@@ -81,9 +81,9 @@
               image: video.length ? video.data().photo : img.data().uri,
               title: [headline, caption, username].join(' '),
               description: [caption, username].join(' '),
-              ui: {
-               flyout: 'top left'
-              },
+              // ui: {
+              //  flyout: 'top left'
+              // },
               networks: {
                 twitter: {
                   enabled: true
