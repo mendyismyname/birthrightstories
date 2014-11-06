@@ -28,4 +28,28 @@ class InstagramUser < ActiveRecord::Base
     "http://instagram.com/#{username}"
   end
   
+  def refresh
+    response = Instagram.client.user(instagram_id)
+    attrs = InstagramMapper::Media.to_instagram_user(Hashie::Mash.new(user: response))
+
+    self.profile_picture = attrs[:profile_picture]
+    save
+    
+    self.bio             = attrs[:bio]
+    self.website         = attrs[:website]
+    self.full_name       = attrs[:full_name]
+    save
+  end
+
+  def self.refresh_all
+    InstagramUser.find_each do |user|
+      begin
+        user.refresh
+      rescue
+        puts "Instagram User Scrape Error"
+        puts self
+      end
+    end
+  end
+
 end

@@ -25,3 +25,7 @@ every 1.days do
   runner "HashtagScraper.fetch_tag_sequence('#{tag_name}')"
   # runner "HashtagAnalytics.save_top_performing_images('#{tag_name}')"
 end
+
+every 14.hours do
+  runner "InstagramUser.refresh_all"
+end
