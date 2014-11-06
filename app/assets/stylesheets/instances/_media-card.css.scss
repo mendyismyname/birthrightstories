@@ -346,6 +346,9 @@
             height: 100%;
             width: 100%;
             background-color: white;
+            background-image: image-url('instagram_media_placeholder.jpg');
+            background-size: cover;
+            position: absolute;
         }
     }
     .media-card-container {
