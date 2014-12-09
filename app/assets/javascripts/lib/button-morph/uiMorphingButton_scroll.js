@@ -91,8 +91,8 @@
                 facebook: {
                   enabled: true,
                   app_id: 717106305044262,
-                  title: headline,
-                  description: [caption, username, locationURI].join(' ')
+                  title: decodeURIComponent(headline),
+                  description: decodeURIComponent([caption, username, locationURI].join(' '))
                 },
                 email: {
                   enabled: true,
